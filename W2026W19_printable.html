@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>师倍AI · 外刊英语周周练 W2026W19</title>
+    <style>
+    @page {
+        size: A4;
+        margin: 10mm;
+    }
+
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body {
+        font-family: "Times New Roman", Georgia, serif;
+        background-color: #F5F5F0;
+        color: #333;
+        font-size: 10px;
+        line-height: 1.5;
+    }
+
+    .page {
+        width: 210mm;
+        min-height: 297mm;
+        margin: 0 auto;
+        padding: 8mm;
+        background: white;
+    }
+
+    @media print {
+        .page { page-break-after: always; }
+        .page:last-child { page-break-after: auto; }
+    }
+
+    .masthead {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid #1E6BB8;
+        padding-bottom: 5px;
+        margin-bottom: 6px;
+    }
+
+    .masthead h1 {
+        font-family: "Microsoft YaHei", "SimHei", sans-serif;
+        font-size: 14px;
+        color: #1E6BB8;
+        letter-spacing: 1px;
+    }
+
+    .masthead .week-info {
+        font-size: 8px;
+        color: #666;
+    }
+
+    .page-number {
+        font-size: 16px;
+        font-weight: bold;
+        color: #1E6BB8;
+        font-family: "Arial Black", sans-serif;
+    }
+
+    .page-number span {
+        font-size: 9px;
+        color: #333;
+        font-weight: normal;
+    }
+
+    .half-page {
+        height: calc(50% - 3px);
+        margin-bottom: 6px;
+        overflow: hidden;
+    }
+
+    .half-page:last-child {
+        margin-bottom: 0;
+        margin-top: 6px;
+    }
+
+    .article-header {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        padding: 3px 5px;
+        background: linear-gradient(to right, #F0F7FF, #FAFAFA);
+        border: 1px solid #D0E4F5;
+        border-radius: 3px;
+        margin-bottom: 3px;
+    }
+
+    .article-tag {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        background: #1E6BB8;
+        color: white;
+        font-size: 11px;
+        font-weight: bold;
+        text-align: center;
+        line-height: 20px;
+        border-radius: 3px;
+        font-family: "Arial Black", sans-serif;
+        flex-shrink: 0;
+    }
+
+    .article-tag.green { background: #27AE60; }
+    .article-tag.purple { background: #8E44AD; }
+    .article-tag.red { background: #C0392B; }
+
+    .article-title {
+        font-size: 11px;
+        font-weight: bold;
+        color: #1a1a1a;
+        line-height: 1.3;
+    }
+
+    .article-source {
+        font-size: 7px;
+        color: #999;
+    }
+
+    .article-image {
+        width: 100%;
+        max-height: 28mm;
+        object-fit: cover;
+        border-radius: 3px;
+        margin-bottom: 3px;
+        break-inside: avoid;
+        break-after: column;
+    }
+
+    .three-col-flow {
+        columns: 3;
+        column-gap: 10px;
+        column-rule: none;
+        padding: 0 3px;
+    }
+
+    .three-col-flow p.article-text {
+        text-indent: 1.5em;
+        margin-bottom: 0.3em;
+        font-size: 10px;
+        line-height: 1.45;
+        text-align: justify;
+    }
+
+    .three-col-flow p.article-text.first-para {
+        text-indent: 0;
+    }
+
+    .three-col-flow p.article-text.first-para::first-letter {
+        float: left;
+        font-size: 2.8em;
+        line-height: 0.85;
+        padding-right: 3px;
+        padding-top: 2px;
+        font-weight: bold;
+        font-family: "Georgia", serif;
+    }
+
+    .three-col-flow p.article-text.first-para.drop-A::first-letter { color: #1E6BB8; }
+    .three-col-flow p.article-text.first-para.drop-B::first-letter { color: #27AE60; }
+    .three-col-flow p.article-text.first-para.drop-C::first-letter { color: #8E44AD; }
+    .three-col-flow p.article-text.first-para.drop-D::first-letter { color: #C0392B; }
+
+    .three-col-flow .questions-header {
+        font-size: 9px;
+        font-weight: bold;
+        color: #E67E22;
+        margin: 4px 0 3px 0;
+        padding: 3px 5px;
+        background: #FFF8F0;
+        border: 1px dashed #E67E22;
+        border-radius: 2px;
+    }
+
+    .three-col-flow .question-item {
+        font-size: 9px;
+        line-height: 1.35;
+        margin-bottom: 5px;
+        padding: 4px;
+        background: #FAFAFA;
+        border-radius: 2px;
+        border-left: 3px solid #E67E22;
+    }
+
+    .three-col-flow .question-title {
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 2px;
+        font-family: "Arial", sans-serif;
+    }
+
+    .three-col-flow .question-options {
+        list-style: none;
+        font-size: 8px;
+        line-height: 1.3;
+        padding-left: 4px;
+    }
+
+    .three-col-flow .question-options li {
+        padding-left: 12px;
+        position: relative;
+    }
+
+    .three-col-flow .question-options li::before {
+        content: "\25CB  ";
+        color: #CCC;
+        position: absolute;
+        left: 0;
+    }
+
+    .footer {
+        text-align: center;
+        margin-top: 4px;
+        padding-top: 3px;
+        border-top: 1px solid #E0E0E0;
+        color: #999;
+        font-size: 6px;
+        font-family: "Arial", sans-serif;
+    }
+
+    .answer-section {
+        margin-bottom: 12px;
+        page-break-inside: avoid;
+    }
+
+    .answer-header {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 6px;
+        background: linear-gradient(to right, #FFF8F0, #FFFDF9);
+        border: 1px solid #E8D4C4;
+        border-radius: 3px;
+        margin-bottom: 6px;
+    }
+
+    .answer-header .article-title {
+        font-size: 10px;
+    }
+
+    .answer-choices {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-bottom: 6px;
+    }
+
+    .answer-choice {
+        font-size: 9px;
+        font-weight: bold;
+        color: #27AE60;
+        background: #E8F8F0;
+        padding: 2px 6px;
+        border-radius: 3px;
+    }
+
+    .explanation-block {
+        font-size: 8px;
+        line-height: 1.5;
+        padding: 4px 5px;
+        background: #FAFAFA;
+        border-left: 3px solid #1E6BB8;
+        margin-bottom: 4px;
+    }
+
+    .explanation-block strong {
+        color: #1E6BB8;
+    }
+
+    .word-bank {
+        font-size: 8px;
+        line-height: 1.5;
+        padding: 4px 5px;
+        background: #F8F8FF;
+        border: 1px solid #E0E0E8;
+        border-radius: 3px;
+        margin-bottom: 6px;
+    }
+
+    .word-bank strong {
+        color: #8E44AD;
+    }
+
+    .traps-section {
+        font-size: 7px;
+        line-height: 1.4;
+        color: #666;
+        padding-left: 5px;
+        margin-bottom: 6px;
+    }
+
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="masthead">
+    <h1>师倍AI · 外刊英语周周练</h1>
+    <div class="week-info">W2026W19</div>
+    <div class="page-number">1 <span>/ 3</span></div>
+</div><div class="half-page">
+    <div class="article-header">
+    <span class="article-tag ">A</span>
+    <div>
+        <div class="article-title">Workplace Childhood Friends: A New Bond</div>
+        <div class="article-source">China Daily | social_life</div>
+    </div>
+</div>
+    <img class="article-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjAwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8IS0tIEJvdHRvbSBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYm90dG9tRmFkZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOEU0NEFEIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOEU0NEFEIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIFNreSBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2t5R3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRDJCNERFIiBzdG9wLW9wYWNpdHk9IjAuMyIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjYwJSIgc3RvcC1jb2xvcj0iI0QyQjRERSIgc3RvcC1vcGFjaXR5PSIwLjA4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0ZGRkZGRiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPCEtLSBHbG93IGZvciBmcmllbmRzaGlwIHN5bWJvbCAtLT4KICAgIDxyYWRpYWxHcmFkaWVudCBpZD0iZ2xvd1B1cnBsZSIgY3g9IjUwJSIgY3k9IjUwJSIgcj0iNTAlIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iIzhFNDRBRCIgc3RvcC1vcGFjaXR5PSIwLjE4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzhFNDRBRCIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSBCYWNrZ3JvdW5kIC0tPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMjAwIiBmaWxsPSIjRkZGRkZGIi8+CgogIDwhLS0gU3VidGxlIHNreSB3YXNoIC0tPgogIDxyZWN0IHdpZHRoPSI4MDAiIGhlaWdodD0iMjAwIiBmaWxsPSJ1cmwoI3NreUdyYWQpIi8+CgogIDwhLS0gTGVmdCBkZWNvcmF0aXZlIEVuZ2xpc2ggdGV4dCAoc2VtaS10cmFuc3BhcmVudCkgLS0+CiAgPHRleHQgeD0iMzAiIHk9IjYwIiBmb250LWZhbWlseT0iR2VvcmdpYSwgJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmIiBmb250LXNpemU9IjIyIiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjEzIiBmb250LXN0eWxlPSJpdGFsaWMiIGxldHRlci1zcGFjaW5nPSIxLjUiPkZyaWVuZHNoaXA8L3RleHQ+CiAgPHRleHQgeD0iMzgiIHk9Ijg4IiBmb250LWZhbWlseT0iR2VvcmdpYSwgJ1RpbWVzIE5ldyBSb21hbicsIHNlcmlmIiBmb250LXNpemU9IjE2IiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjEwIiBmb250LXN0eWxlPSJpdGFsaWMiIGxldHRlci1zcGFjaW5nPSIyIj7DlyBDYXJlZXI8L3RleHQ+CgogIDwhLS0gQmFja2dyb3VuZCBnbG93IGNpcmNsZSAtLT4KICA8Y2lyY2xlIGN4PSI0MjAiIGN5PSIxMDUiIHI9IjkwIiBmaWxsPSJ1cmwoI2dsb3dQdXJwbGUpIi8+CgogIDwhLS0gPT09IENpdHkgLyBPZmZpY2Ugc2t5bGluZSBzaWxob3VldHRlID09PSAtLT4KICA8ZyBmaWxsPSIjRDJCNERFIiBvcGFjaXR5PSIwLjQ1Ij4KICAgIDwhLS0gRmFyLWxlZnQgc21hbGwgYnVpbGRpbmcgLS0+CiAgICA8cmVjdCB4PSIxMjAiIHk9IjEzMCIgd2lkdGg9IjIyIiBoZWlnaHQ9IjUwIiByeD0iMSIvPgogICAgPHJlY3QgeD0iMTQ4IiB5PSIxMTgiIHdpZHRoPSIxOCIgaGVpZ2h0PSI2MiIgcng9IjEiLz4KICAgIDwhLS0gTGVmdCBtaWQgYnVpbGRpbmcgLS0+CiAgICA8cmVjdCB4PSIxNzUiIHk9IjEwNSIgd2lkdGg9IjMwIiBoZWlnaHQ9Ijc1IiByeD0iMSIvPgogICAgPHJlY3QgeD0iMjEwIiB5PSIxMjUiIHdpZHRoPSIyMCIgaGVpZ2h0PSI1NSIgcng9IjEiLz4KICAgIDwhLS0gVGFsbCBvZmZpY2UgdG93ZXIgY2VudGVyLWxlZnQgLS0+CiAgICA8cmVjdCB4PSIyNDAiIHk9IjcyIiB3aWR0aD0iMzYiIGhlaWdodD0iMTA4IiByeD0iMSIvPgogICAgPHJlY3QgeD0iMjUwIiB5PSI2NCIgd2lkdGg9IjE2IiBoZWlnaHQ9IjgiIHJ4PSIxIi8+CiAgICA8IS0tIENlbnRlciBidWlsZGluZyAtLT4KICAgIDxyZWN0IHg9IjI4NSIgeT0iOTUiIHdpZHRoPSIyOCIgaGVpZ2h0PSI4NSIgcng9IjEiLz4KICAgIDxyZWN0IHg9IjMyMCIgeT0iMTEwIiB3aWR0aD0iMjIiIGhlaWdodD0iNzAiIHJ4PSIxIi8+CiAgICA8IS0tIFJpZ2h0IGNlbnRlciB0b3dlciAtLT4KICAgIDxyZWN0IHg9IjM1MCIgeT0iODAiIHdpZHRoPSIzMiIgaGVpZ2h0PSIxMDAiIHJ4PSIxIi8+CiAgICA8cmVjdCB4PSIzNjAiIHk9IjcyIiB3aWR0aD0iMTIiIGhlaWdodD0iOCIgcng9IjEiLz4KICAgIDwhLS0gTWlkLXJpZ2h0IC0tPgogICAgPHJlY3QgeD0iMzkyIiB5PSIxMTUiIHdpZHRoPSIyMCIgaGVpZ2h0PSI2NSIgcng9IjEiLz4KICAgIDxyZWN0IHg9IjQyMCIgeT0iMTAwIiB3aWR0aD0iMjYiIGhlaWdodD0iODAiIHJ4PSIxIi8+CiAgICA8IS0tIEZhci1yaWdodCB0b3dlciAtLT4KICAgIDxyZWN0IHg9IjQ1NiIgeT0iNjgiIHdpZHRoPSIzNCIgaGVpZ2h0PSIxMTIiIHJ4PSIxIi8+CiAgICA8cmVjdCB4PSI0NjYiIHk9IjU4IiB3aWR0aD0iMTQiIGhlaWdodD0iMTAiIHJ4PSIxIi8+CiAgICA8IS0tIFJpZ2h0IHNpZGUgYnVpbGRpbmdzIC0tPgogICAgPHJlY3QgeD0iNTAwIiB5PSIxMDgiIHdpZHRoPSIyNCIgaGVpZ2h0PSI3MiIgcng9IjEiLz4KICAgIDxyZWN0IHg9IjUzMCIgeT0iMTIwIiB3aWR0aD0iMTgiIGhlaWdodD0iNjAiIHJ4PSIxIi8+CiAgICA8cmVjdCB4PSI1NTYiIHk9IjEwMCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjgwIiByeD0iMSIvPgogICAgPHJlY3QgeD0iNTkyIiB5PSIxMjgiIHdpZHRoPSIyMiIgaGVpZ2h0PSI1MiIgcng9IjEiLz4KICAgIDxyZWN0IHg9IjYyMiIgeT0iMTM1IiB3aWR0aD0iMTgiIGhlaWdodD0iNDUiIHJ4PSIxIi8+CiAgICA8cmVjdCB4PSI2NDgiIHk9IjEyMCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjYwIiByeD0iMSIvPgogICAgPHJlY3QgeD0iNjgwIiB5PSIxNDAiIHdpZHRoPSIyMCIgaGVpZ2h0PSI0MCIgcng9IjEiLz4KICA8L2c+CgogIDwhLS0gV2luZG93IGRvdHMgb24gYnVpbGRpbmdzIChzcGFyc2UsIHN1YnRsZSkgLS0+CiAgPGcgZmlsbD0iIzhFNDRBRCIgb3BhY2l0eT0iMC4xMiI+CiAgICA8cmVjdCB4PSIyNDkiIHk9IjgyIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIyNjAiIHk9IjgyIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIyNDkiIHk9Ijk2IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIyNjAiIHk9Ijk2IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIyNDkiIHk9IjExMCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iMjYwIiB5PSIxMTAiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIwLjUiLz4KICAgIDxyZWN0IHg9IjM1NiIgeT0iODgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIwLjUiLz4KICAgIDxyZWN0IHg9IjM2NiIgeT0iODgiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIwLjUiLz4KICAgIDxyZWN0IHg9IjM1NiIgeT0iMTAyIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIzNjYiIHk9IjEwMiIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iNDYyIiB5PSI3NiIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iNDcyIiB5PSI3NiIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iNDYyIiB5PSI5MCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iNDcyIiB5PSI5MCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iNDYyIiB5PSIxMDQiIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIwLjUiLz4KICAgIDxyZWN0IHg9IjE4NCIgeT0iMTEzIiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSIxOTQiIHk9IjExMyIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogICAgPHJlY3QgeD0iMTg0IiB5PSIxMjciIHdpZHRoPSI0IiBoZWlnaHQ9IjQiIHJ4PSIwLjUiLz4KICAgIDxyZWN0IHg9IjU2NCIgeT0iMTA4IiB3aWR0aD0iNCIgaGVpZ2h0PSI0IiByeD0iMC41Ii8+CiAgICA8cmVjdCB4PSI1NzQiIHk9IjEwOCIgd2lkdGg9IjQiIGhlaWdodD0iNCIgcng9IjAuNSIvPgogIDwvZz4KCiAgPCEtLSA9PT0gVHdvIHBlcnNvbiBzaWxob3VldHRlcyAod29ya3BsYWNlIGZyaWVuZHMpID09PSAtLT4KICA8IS0tIFBlcnNvbiAxIChsZWZ0LCBzbGlnaHRseSBiZWhpbmQpIC0tPgogIDxnIGZpbGw9IiM4RTQ0QUQiIG9wYWNpdHk9IjAuNzUiPgogICAgPCEtLSBIZWFkIC0tPgogICAgPGNpcmNsZSBjeD0iMzU1IiBjeT0iMTI4IiByPSI5Ii8+CiAgICA8IS0tIEJvZHkgLyB0b3JzbyAtLT4KICAgIDxwYXRoIGQ9Ik0zNDQsMTM3IFEzNDUsMTQ4IDM0OCwxNTggTDM2MiwxNTggUTM2NSwxNDggMzY2LDEzNyBaIi8+CiAgICA8IS0tIEFybSByZWFjaGluZyB0b3dhcmQgcGVyc29uIDIgLS0+CiAgICA8cGF0aCBkPSJNMzY0LDE0MiBRMzcyLDE0MCAzNzgsMTQ0IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjc1Ii8+CiAgPC9nPgoKICA8IS0tIFBlcnNvbiAyIChyaWdodCwgc2xpZ2h0bHkgaW4gZnJvbnQpIC0tPgogIDxnIGZpbGw9IiM4RTQ0QUQiIG9wYWNpdHk9IjAuODUiPgogICAgPCEtLSBIZWFkIC0tPgogICAgPGNpcmNsZSBjeD0iMzkwIiBjeT0iMTI1IiByPSI5LjUiLz4KICAgIDwhLS0gQm9keSAvIHRvcnNvIC0tPgogICAgPHBhdGggZD0iTTM3OSwxMzQuNSBRMzgwLDE0NiAzODMsMTU4IEwzOTcsMTU4IFE0MDAsMTQ2IDQwMSwxMzQuNSBaIi8+CiAgICA8IS0tIEFybSByZWFjaGluZyB0b3dhcmQgcGVyc29uIDEgLS0+CiAgICA8cGF0aCBkPSJNMzgwLDE0MCBRMzc0LDEzOCAzNjgsMTQyIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjg1Ii8+CiAgPC9nPgoKICA8IS0tIEZyaWVuZHNoaXAgbGluayAvIGhhbmRzaGFrZSBhY2NlbnQgKHNtYWxsIGhlYXJ0IG9yIGNvbm5lY3Rpb24gZG90KSAtLT4KICA8Y2lyY2xlIGN4PSIzNzMiIGN5PSIxNDAiIHI9IjMiIGZpbGw9IiM4RTQ0QUQiIG9wYWNpdHk9IjAuNSIvPgoKICA8IS0tIFNtYWxsIGZsb2F0aW5nIGRlY29yYXRpdmUgZWxlbWVudHMgKGNvbW11bml0eS9jb25uZWN0aW9uIHZpYmUpIC0tPgogIDxnIGZpbGw9IiNEMkI0REUiIG9wYWNpdHk9IjAuNCI+CiAgICA8Y2lyY2xlIGN4PSIzMTAiIGN5PSIxMDAiIHI9IjMiLz4KICAgIDxjaXJjbGUgY3g9IjQzMCIgY3k9Ijk1IiByPSIyLjUiLz4KICAgIDxjaXJjbGUgY3g9IjM0MCIgY3k9Ijg4IiByPSIyIi8+CiAgICA8Y2lyY2xlIGN4PSI0MDUiIGN5PSI4NSIgcj0iMiIvPgogICAgPGNpcmNsZSBjeD0iMzcwIiBjeT0iNzgiIHI9IjIuOCIvPgogIDwvZz4KICA8IS0tIFRoaW4gY29ubmVjdGluZyBsaW5lcyBiZXR3ZWVuIGRvdHMgKG5ldHdvcmsgZmVlbCkgLS0+CiAgPGcgc3Ryb2tlPSIjRDJCNERFIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC4yNSI+CiAgICA8bGluZSB4MT0iMzEwIiB5MT0iMTAwIiB4Mj0iMzQwIiB5Mj0iODgiLz4KICAgIDxsaW5lIHgxPSIzNDAiIHkxPSI4OCIgeDI9IjM3MCIgeTI9Ijc4Ii8+CiAgICA8bGluZSB4MT0iMzcwIiB5MT0iNzgiIHgyPSI0MDUiIHkyPSI4NSIvPgogICAgPGxpbmUgeDE9IjQwNSIgeTE9Ijg1IiB4Mj0iNDMwIiB5Mj0iOTUiLz4KICAgIDxsaW5lIHgxPSIzNDAiIHkxPSI4OCIgeDI9IjQwNSIgeTI9Ijg1Ii8+CiAgICA8bGluZSB4MT0iMzEwIiB5MT0iMTAwIiB4Mj0iMzcwIiB5Mj0iNzgiLz4KICA8L2c+CgogIDwhLS0gQm90dG9tIGdyYWRpZW50IG92ZXJsYXkgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYm90dG9tRmFkZSkiLz4KCiAgPCEtLSBUaGluIGFjY2VudCBsaW5lIGF0IHZlcnkgYm90dG9tIC0tPgogIDxyZWN0IHg9IjAiIHk9IjE5NiIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0IiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjUiIHJ4PSIwIi8+Cjwvc3ZnPg==" alt="Workplace Childhood Friends: A New Bond">
+    <div class="three-col-flow">
+        <p class="article-text first-para drop-A">In China&#x27;s high-pressure labor market, a new term is gaining popularity among young professionals: &quot;workplace childhood friends.&quot; This refers to the special bond formed between entry-level hires who join a company at the same time. Unlike the strategic networking common among senior managers, these relationships grow through shared struggles during the difficult transition from school to work, when early professional failures and steep learning curves bring people together.</p>
+        <p class="article-text">Moreover, real-life examples show how powerful these bonds can be. Chen Xinyi, a banking professional in Xi&#x27;an, was sent to Beijing for six months of intensive training along with about 50 new recruits. Living together in a hotel and navigating a new city, they built deep trust. When Chen suffered a personal crisis, a colleague silently took over her workload and comforted her without asking questions. Similarly, Tian Xiao, a former TV news editor, developed a &quot;silent rhythm&quot; of mutual support with his partner during 12-hour night shifts in the pandemic. Even after leaving the company, their bond continues through a WeChat group where members share life updates and photos of their children.</p>
+        <p class="article-text">In addition, these friendships serve different roles across professions. In the civil service, they act as a safeguard against professional isolation, while in the technology sector, some young workers even bond over shared personality types, creating understanding so deep that they can cancel social plans at the last minute without explanation.</p>
+        <p class="article-text">Furthermore, as China&#x27;s workplace culture gradually moves away from the &quot;lone wolf&quot; model, the friends made at the starting line of a career have become essential emotional support for a generation facing high job mobility. With hashtags related to &quot;first-job camaraderie&quot; surging on social media, it is clear that emotional connection is now valued just as highly as career advancement itself.</p>
+        <div class="questions-header">Questions</div>
+        <div class="question-item">
+        <div class="question-title">Q1. (detail) According to the passage, what happened when Chen Xinyi suffered a personal crisis?</div>
+        <ul class="question-options">
+            <li>A. A colleague quietly took over her work and comforted her without asking questions.</li>
+            <li>B. She was sent back to Xi&#x27;an to recover from the crisis.</li>
+            <li>C. About 50 new recruits organized a group effort to help her.</li>
+            <li>D. Her manager arranged for someone to share her workload temporarily.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q2. (detail) How do workplace childhood friendships differ in their functions across professions according to the passage?</div>
+        <ul class="question-options">
+            <li>A. In the civil service they protect against professional isolation, while in the technology sector they are built on shared personality types.</li>
+            <li>B. In both the civil service and the technology sector, they mainly serve as a safeguard against professional isolation.</li>
+            <li>C. In the technology sector, they help young workers improve their professional skills more quickly.</li>
+            <li>D. They play exactly the same role across all professions by providing career advancement opportunities.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q3. (word_meaning) What does the word &quot;camaraderie&quot; in the last paragraph most likely mean?</div>
+        <ul class="question-options">
+            <li>A. Mutual trust and friendship among people who share experiences</li>
+            <li>B. Professional competition for career advancement</li>
+            <li>C. Formal networking strategies used by senior managers</li>
+            <li>D. A feeling of loneliness in a new working environment</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q4. (main_idea) What is the main idea of the passage?</div>
+        <ul class="question-options">
+            <li>A. Workplace childhood friendships formed at the start of a career have become an essential source of emotional support for young professionals in China.</li>
+            <li>B. Senior managers in China are adopting the networking strategies of entry-level hires to improve workplace relationships.</li>
+            <li>C. Young professionals in China can no longer survive in the workplace without making close friends on the job.</li>
+            <li>D. Social media is the primary reason why workplace friendships have become popular among young Chinese professionals.</li>
+        </ul>
+    </div>
+    </div>
+</div><div class="half-page">
+    <div class="article-header">
+    <span class="article-tag green">B</span>
+    <div>
+        <div class="article-title">From Shoulder Poles to Global Tables: The Rise of Shaxian Snacks</div>
+        <div class="article-source">China Daily | culture_education</div>
+    </div>
+</div>
+    <img class="article-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjAwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8IS0tIEJvdHRvbSBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYm90dG9tR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjOEU0NEFEIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOEU0NEFEIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIEJhY2tncm91bmQgZ3JhZGllbnQgLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9ImJnR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRkRGMkY4Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0Y1RUVGOCIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwhLS0gQWNjZW50IGdyYWRpZW50IGZvciBkZWNvcmF0aXZlIGJhciAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYWNjZW50QmFyIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMCI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiM4RTQ0QUQiIHN0b3Atb3BhY2l0eT0iMC45Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0QyQjRERSIgc3RvcC1vcGFjaXR5PSIwLjYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIEJhY2tncm91bmQgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmdHcmFkKSIvPgoKICA8IS0tIFN1YnRsZSBwYXR0ZXJuIGRvdHMgLS0+CiAgPGcgb3BhY2l0eT0iMC4wNiI+CiAgICA8Y2lyY2xlIGN4PSI1MCIgY3k9IjMwIiByPSIzIiBmaWxsPSIjOEU0NEFEIi8+CiAgICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSI1MCIgcj0iMiIgZmlsbD0iIzhFNDRBRCIvPgogICAgPGNpcmNsZSBjeD0iMjgwIiBjeT0iMjUiIHI9IjIuNSIgZmlsbD0iIzhFNDRBRCIvPgogICAgPGNpcmNsZSBjeD0iNDAwIiBjeT0iNDUiIHI9IjIiIGZpbGw9IiM4RTQ0QUQiLz4KICAgIDxjaXJjbGUgY3g9IjUyMCIgY3k9IjIwIiByPSIzIiBmaWxsPSIjOEU0NEFEIi8+CiAgICA8Y2lyY2xlIGN4PSI2NTAiIGN5PSI0MCIgcj0iMiIgZmlsbD0iIzhFNDRBRCIvPgogICAgPGNpcmNsZSBjeD0iNzUwIiBjeT0iMzAiIHI9IjIuNSIgZmlsbD0iIzhFNDRBRCIvPgogICAgPGNpcmNsZSBjeD0iMTAwIiBjeT0iMTcwIiByPSIyIiBmaWxsPSIjOEU0NEFEIi8+CiAgICA8Y2lyY2xlIGN4PSIzNTAiIGN5PSIxODAiIHI9IjIuNSIgZmlsbD0iIzhFNDRBRCIvPgogICAgPGNpcmNsZSBjeD0iNjAwIiBjeT0iMTc1IiByPSIyIiBmaWxsPSIjOEU0NEFEIi8+CiAgICA8Y2lyY2xlIGN4PSI3MDAiIGN5PSIxODUiIHI9IjMiIGZpbGw9IiM4RTQ0QUQiLz4KICA8L2c+CgogIDwhLS0gTGVmdCBzaWRlOiBzZW1pLXRyYW5zcGFyZW50IGRlY29yYXRpdmUgRW5nbGlzaCB0ZXh0IC0tPgogIDx0ZXh0IHg9IjMwIiB5PSIxMDAiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiIGZvbnQtc2l6ZT0iNDIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjEwIiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwgMzAsIDEwMCkiPkhlcml0YWdlPC90ZXh0PgogIDx0ZXh0IHg9IjU1IiB5PSIxNDUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiIGZvbnQtc2l6ZT0iMjgiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjA4IiB0cmFuc2Zvcm09InJvdGF0ZSgtOCwgNTUsIDE0NSkiPiYjMjE1OyBJbm5vdmF0aW9uPC90ZXh0PgoKICA8IS0tIERlY29yYXRpdmUgdmVydGljYWwgYWNjZW50IGxpbmUgb24gZmFyIGxlZnQgLS0+CiAgPHJlY3QgeD0iMTIiIHk9IjMwIiB3aWR0aD0iMyIgaGVpZ2h0PSIxNDAiIHJ4PSIxLjUiIGZpbGw9IiM4RTQ0QUQiIG9wYWNpdHk9IjAuMzUiLz4KCiAgPCEtLSA9PT0gQ2VudGVyIFZpc3VhbCBDb21wb3NpdGlvbiA9PT0gLS0+CgogIDwhLS0gVHJhZGl0aW9uYWwgQ2hpbmVzZSBidWlsZGluZy9wYXZpbGlvbiBzaWxob3VldHRlIChsZWZ0LWNlbnRlcikgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTUwLCA1NSkiIG9wYWNpdHk9IjAuODUiPgogICAgPCEtLSBSb29mIC0tPgogICAgPHBhdGggZD0iTTMwLDUwIEw1MCwzMCBMNzAsNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogICAgPHBhdGggZD0iTTI1LDUwIEw1MCwyNSBMNzUsNTAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC41Ii8+CiAgICA8IS0tIFJvb2YgcmlkZ2Ugb3JuYW1lbnQgLS0+CiAgICA8bGluZSB4MT0iNTAiIHkxPSIyNSIgeDI9IjUwIiB5Mj0iMjAiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPCEtLSBQaWxsYXJzIC0tPgogICAgPGxpbmUgeDE9IjM1IiB5MT0iNTAiIHgyPSIzNSIgeTI9IjgwIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8bGluZSB4MT0iNjUiIHkxPSI1MCIgeDI9IjY1IiB5Mj0iODAiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDwhLS0gQmFzZSAtLT4KICAgIDxsaW5lIHgxPSIyOCIgeTE9IjgwIiB4Mj0iNzIiIHkyPSI4MCIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPCEtLSBDcm9zcyBiZWFtIC0tPgogICAgPGxpbmUgeDE9IjM1IiB5MT0iNTgiIHgyPSI2NSIgeTI9IjU4IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNiIvPgogIDwvZz4KCiAgPCEtLSBTaG91bGRlciBwb2xlICjmiYHmi4UpIHdpdGggYmFza2V0cyAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgyNDAsIDY1KSIgb3BhY2l0eT0iMC44Ij4KICAgIDwhLS0gUG9sZSAtLT4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMzAiIHgyPSI4MCIgeTI9IjI1IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICA8IS0tIExlZnQgYmFza2V0IC0tPgogICAgPGVsbGlwc2UgY3g9IjEyIiBjeT0iNTAiIHJ4PSIxNCIgcnk9IjgiIGZpbGw9IiNEMkI0REUiIG9wYWNpdHk9IjAuNiIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPHBhdGggZD0iTTAsNDIgUTEyLDM2IDI0LDQyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICA8bGluZSB4MT0iMTIiIHkxPSIzNCIgeDI9IjEyIiB5Mj0iMzAiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxLjUiLz4KICAgIDwhLS0gUmlnaHQgYmFza2V0IC0tPgogICAgPGVsbGlwc2UgY3g9IjY4IiBjeT0iNDUiIHJ4PSIxNCIgcnk9IjgiIGZpbGw9IiNEMkI0REUiIG9wYWNpdHk9IjAuNiIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPHBhdGggZD0iTTU2LDM3IFE2OCwzMSA4MCwzNyIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPGxpbmUgeDE9IjY4IiB5MT0iMjkiIHgyPSI2OCIgeTI9IjI1IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgPC9nPgoKICA8IS0tIEFycm93IC8gdHJhbnNpdGlvbiBzeW1ib2wgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzQ1LCA4NSkiIG9wYWNpdHk9IjAuNSI+CiAgICA8bGluZSB4MT0iMCIgeTE9IjE1IiB4Mj0iNDAiIHkyPSIxNSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1kYXNoYXJyYXk9IjQsMyIvPgogICAgPHBvbHlnb24gcG9pbnRzPSI0MCwxMCA1MCwxNSA0MCwyMCIgZmlsbD0iIzhFNDRBRCIvPgogIDwvZz4KCiAgPCEtLSBCb3dsIHdpdGggc3RlYW0gKGNlbnRlci1yaWdodCkgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDIwLCA1NSkiIG9wYWNpdHk9IjAuODUiPgogICAgPCEtLSBCb3dsIGJvZHkgLS0+CiAgICA8cGF0aCBkPSJNNSw1MCBRMjUsNzUgNDUsNTAiIGZpbGw9IiNEMkI0REUiIG9wYWNpdHk9IjAuNSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgPCEtLSBCb3dsIHJpbSAtLT4KICAgIDxsaW5lIHgxPSIyIiB5MT0iNTAiIHgyPSI0OCIgeTI9IjUwIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMi41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgIDwhLS0gU3RlYW0gbGluZXMgLS0+CiAgICA8cGF0aCBkPSJNMTUsNDIgUTE4LDMyIDE1LDIyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNSIvPgogICAgPHBhdGggZD0iTTI1LDQwIFEyOCwyOCAyNSwxOCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxwYXRoIGQ9Ik0zNSw0MiBRMzgsMzIgMzUsMjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC41Ii8+CiAgICA8IS0tIENob3BzdGlja3MgLS0+CiAgICA8bGluZSB4MT0iNTIiIHkxPSIzNSIgeDI9IjcwIiB5Mj0iNTUiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIG9wYWNpdHk9IjAuNyIvPgogICAgPGxpbmUgeDE9IjU2IiB5MT0iMzMiIHgyPSI3NCIgeTI9IjUzIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjciLz4KICA8L2c+CgogIDwhLS0gR2xvYmUgLyB3b3JsZCBpY29uIChyaWdodCBhcmVhLCByZXByZXNlbnRpbmcgZ2xvYmFsaXphdGlvbikgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNTUwLCA1MCkiIG9wYWNpdHk9IjAuOCI+CiAgICA8IS0tIEdsb2JlIGNpcmNsZSAtLT4KICAgIDxjaXJjbGUgY3g9IjM1IiBjeT0iMzUiIHI9IjMyIiBmaWxsPSIjRDJCNERFIiBvcGFjaXR5PSIwLjI1IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMiIvPgogICAgPCEtLSBMYXRpdHVkZSBsaW5lcyAtLT4KICAgIDxlbGxpcHNlIGN4PSIzNSIgY3k9IjM1IiByeD0iMzIiIHJ5PSIxMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNCIvPgogICAgPGVsbGlwc2UgY3g9IjM1IiBjeT0iMzUiIHJ4PSIzMiIgcnk9IjIyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC4zIi8+CiAgICA8IS0tIExvbmdpdHVkZSBsaW5lIC0tPgogICAgPGVsbGlwc2UgY3g9IjM1IiBjeT0iMzUiIHJ4PSIxMiIgcnk9IjMyIiBmaWxsPSJub25lIiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC40Ii8+CiAgICA8IS0tIFZlcnRpY2FsIG1lcmlkaWFuIC0tPgogICAgPGxpbmUgeDE9IjM1IiB5MT0iMyIgeDI9IjM1IiB5Mj0iNjciIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KICAgIDwhLS0gU21hbGwgZmxhZyBvbiBnbG9iZSAtLT4KICAgIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ4LCA1KSI+CiAgICAgIDxsaW5lIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxNiIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwb2x5Z29uIHBvaW50cz0iMCwwIDEyLDQgMCw4IiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjciLz4KICAgIDwvZz4KICAgIDwhLS0gTG9jYXRpb24gcGluIC0tPgogICAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjAsIDIyKSIgb3BhY2l0eT0iMC42Ij4KICAgICAgPHBhdGggZD0iTTUsMCBDMi4yLDAgMCwyLjIgMCw1IEMwLDguOCA1LDE0IDUsMTQgQzUsMTQgMTAsOC44IDEwLDUgQzEwLDIuMiA3LjgsMCA1LDBaIiBmaWxsPSIjOEU0NEFEIi8+CiAgICAgIDxjaXJjbGUgY3g9IjUiIGN5PSI1IiByPSIyIiBmaWxsPSJ3aGl0ZSIvPgogICAgPC9nPgogIDwvZz4KCiAgPCEtLSBTbWFsbCBkZWNvcmF0aXZlIGJvb2sgKGVkdWNhdGlvbi9jdWx0dXJlIGVsZW1lbnQpIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDY2MCwgNzApIiBvcGFjaXR5PSIwLjciPgogICAgPCEtLSBCb29rIGNvdmVyIC0tPgogICAgPHJlY3QgeD0iMCIgeT0iNSIgd2lkdGg9IjMwIiBoZWlnaHQ9IjQwIiByeD0iMiIgZmlsbD0iI0QyQjRERSIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEuNSIvPgogICAgPCEtLSBCb29rIHNwaW5lIC0tPgogICAgPHJlY3QgeD0iMCIgeT0iNSIgd2lkdGg9IjUiIGhlaWdodD0iNDAiIHJ4PSIxIiBmaWxsPSIjOEU0NEFEIiBvcGFjaXR5PSIwLjMiLz4KICAgIDwhLS0gUGFnZXMgLS0+CiAgICA8bGluZSB4MT0iOCIgeTE9IjE0IiB4Mj0iMjYiIHkyPSIxNCIgc3Ryb2tlPSIjOEU0NEFEIiBzdHJva2Utd2lkdGg9IjEiIG9wYWNpdHk9IjAuNCIvPgogICAgPGxpbmUgeDE9IjgiIHkxPSIyMCIgeDI9IjI2IiB5Mj0iMjAiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjQiLz4KICAgIDxsaW5lIHgxPSI4IiB5MT0iMjYiIHgyPSIyMiIgeTI9IjI2IiBzdHJva2U9IiM4RTQ0QUQiIHN0cm9rZS13aWR0aD0iMSIgb3BhY2l0eT0iMC40Ii8+CiAgICA8IS0tIFNlY29uZCBib29rIGJlaGluZCAtLT4KICAgIDxyZWN0IHg9IjYiIHk9IjIiIHdpZHRoPSIyOCIgaGVpZ2h0PSI0MCIgcng9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iIzhFNDRBRCIgc3Ryb2tlLXdpZHRoPSIxIiBvcGFjaXR5PSIwLjMiLz4KICA8L2c+CgogIDwhLS0gRGVjb3JhdGl2ZSBhY2NlbnQgYmFyICh0b3ApIC0tPgogIDxyZWN0IHg9IjAiIHk9IjAiIHdpZHRoPSI4MDAiIGhlaWdodD0iNCIgZmlsbD0idXJsKCNhY2NlbnRCYXIpIi8+CgogIDwhLS0gRGVjb3JhdGl2ZSBzbWFsbCBjaXJjbGVzIC8gbGFudGVybnMgLS0+CiAgPGcgb3BhY2l0eT0iMC4yNSI+CiAgICA8Y2lyY2xlIGN4PSIxMzAiIGN5PSIxNTUiIHI9IjYiIGZpbGw9IiM4RTQ0QUQiLz4KICAgIDxjaXJjbGUgY3g9IjE0NSIgY3k9IjE2MiIgcj0iNCIgZmlsbD0iI0QyQjRERSIvPgogICAgPGNpcmNsZSBjeD0iMzQwIiBjeT0iMTY1IiByPSI1IiBmaWxsPSIjOEU0NEFEIi8+CiAgICA8Y2lyY2xlIGN4PSI2MzAiIGN5PSIxNTgiIHI9IjUiIGZpbGw9IiM4RTQ0QUQiLz4KICAgIDxjaXJjbGUgY3g9IjY0NSIgY3k9IjE1MiIgcj0iMyIgZmlsbD0iI0QyQjRERSIvPgogICAgPGNpcmNsZSBjeD0iNzIwIiBjeT0iMTYwIiByPSI0IiBmaWxsPSIjRDJCNERFIi8+CiAgPC9nPgoKICA8IS0tIEJvdHRvbSBncmFkaWVudCBvdmVybGF5IC0tPgogIDxyZWN0IHg9IjAiIHk9IjE0MCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI2MCIgZmlsbD0idXJsKCNib3R0b21HcmFkKSIvPgoKICA8IS0tIEJvdHRvbSBhY2NlbnQgYmFyIC0tPgogIDxyZWN0IHg9IjAiIHk9IjE5NiIgd2lkdGg9IjgwMCIgaGVpZ2h0PSI0IiBmaWxsPSJ1cmwoI2FjY2VudEJhcikiLz4KPC9zdmc+" alt="From Shoulder Poles to Global Tables: The Rise of Shaxian Snacks">
+    <div class="three-col-flow">
+        <p class="article-text first-para drop-B">In Yubang village, Fujian province, Zhang Xiuji plunges wontons into boiling water and tosses noodles with practiced ease. After years of running snack shops across China, she has finally returned home to a steady local job. The Shaxian snack tradition she learned from her mother comprises over 200 varieties, with signature dishes such as bianrou — wontons with a springy meat filling — and banmian — noodles topped with savory peanut sauce. A local saying captures how villagers built their prosperity: wontons are the &quot;bricks&quot; and noodles are the &quot;steel&quot; that constructed the region&#x27;s modern skyline.</p>
+        <p class="article-text">Zhang&#x27;s personal journey mirrors the brand&#x27;s remarkable rise. In the late 1990s, burdened by 200,000 yuan in debt, she and her husband set out with nothing but wooden mallets and shoulder poles to make a living in Fuzhou, eventually expanding their business to Shanghai and Jiangsu province. Today, Shaxian Delicacies has grown into a national brand with 100,000 outlets across China and an annual turnover reaching 55 billion yuan in 2025.</p>
+        <p class="article-text">The brand has also expanded globally, with 241 overseas branches spanning 81 countries. These stores adapt creatively to local tastes: in Saudi Arabia, pork-filled wontons are reimagined to respect local dietary customs; in Japan, chefs apply peanut sauce more generously; and in France, a drizzle of salad oil adds a touch of local flair. Meanwhile, the rise of foodie tourism is drawing former migrants back to Yubang. With standardized ingredients now delivered by smartphone order, Zhang reflects: &quot;The hardships we once endured are now a thing of the past.&quot;</p>
+        <div class="questions-header">Questions</div>
+        <div class="question-item">
+        <div class="question-title">Q1. (detail) What did Zhang Xiuji and her husband carry when they first set out to make a living in Fuzhou?</div>
+        <ul class="question-options">
+            <li>A. Wooden mallets and shoulder poles.</li>
+            <li>B. Standardized ingredients and smartphones.</li>
+            <li>C. Pork-filled wontons and peanut sauce.</li>
+            <li>D. A loan of 200,000 yuan from a local bank.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q2. (detail) How do the overseas Shaxian snack stores adapt to local tastes according to the passage?</div>
+        <ul class="question-options">
+            <li>A. They replace all traditional recipes with local dishes to attract customers.</li>
+            <li>B. They make creative adjustments, such as reimagining pork-filled wontons in Saudi Arabia and adding salad oil in France.</li>
+            <li>C. They serve exactly the same menu worldwide to maintain brand consistency.</li>
+            <li>D. They reduce the variety of dishes to focus on a few best-selling items abroad.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q3. (word_meaning) What does the word &quot;flair&quot; in the last paragraph most likely mean?</div>
+        <ul class="question-options">
+            <li>A. A distinctive and stylish quality.</li>
+            <li>B. A strict dietary restriction.</li>
+            <li>C. A type of traditional French cooking method.</li>
+            <li>D. A financial advantage for overseas business.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q4. (main_idea) Which of the following best summarizes the main idea of the passage?</div>
+        <ul class="question-options">
+            <li>A. Shaxian snacks originated as a local tradition and evolved into a globally adaptive brand that also drew former migrants back home.</li>
+            <li>B. Zhang Xiuji&#x27;s personal success story proves that anyone can overcome debt through hard work in the food industry.</li>
+            <li>C. Shaxian Delicacies has become the largest restaurant chain in China by strictly preserving its original recipes abroad.</li>
+            <li>D. Overseas expansion of Chinese food brands relies entirely on replacing traditional ingredients with local alternatives.</li>
+        </ul>
+    </div>
+    </div>
+</div><div class="footer">师倍AI · 外刊英语周周练 — 质量是命 · 减负是刀 · 单品是路</div>
+    </div>
+
+    <div class="page">
+        <div class="masthead">
+    <h1>师倍AI · 外刊英语周周练</h1>
+    <div class="week-info">W2026W19</div>
+    <div class="page-number">2 <span>/ 3</span></div>
+</div><div class="half-page">
+    <div class="article-header">
+    <span class="article-tag purple">C</span>
+    <div>
+        <div class="article-title">Fengyun-4C: China&#x27;s Most Capable Weather Satellite Strengthens Disaster Defense</div>
+        <div class="article-source">China Daily | science_technology</div>
+    </div>
+</div>
+    <img class="article-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjAwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8IS0tIOW6lemDqOa3oeiJsua4kOWPmCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYm90dG9tRmFkZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjQzAzOTJCIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjQzAzOTJCIiBzdG9wLW9wYWNpdHk9IjAuMjUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIOiDjOaZr+a4kOWPmCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYmdHcmFkIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiMxQTBBMDgiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjMkMwRTBBIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPCEtLSDkv6Hlj7fms6LmuJDlj5ggLS0+CiAgICA8cmFkaWFsR3JhZGllbnQgaWQ9InNpZ25hbEdyYWQiIGN4PSI1MCUiIGN5PSI1MCUiIHI9IjUwJSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNDMDM5MkIiIHN0b3Atb3BhY2l0eT0iMC42Ii8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0MwMzkyQiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8L3JhZGlhbEdyYWRpZW50PgogICAgPCEtLSDljavmmJ/kuLvkvZPmuJDlj5ggLS0+CiAgICA8bGluZWFyR3JhZGllbnQgaWQ9InNhdEJvZHkiIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0U2QjBBQSIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNDMDM5MkIiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIOWkqumYs+iDveadv+a4kOWPmCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic29sYXJHcmFkIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNDMDM5MkIiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjOTIyQjIxIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogIDwvZGVmcz4KCiAgPCEtLSDog4zmma8gLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmdHcmFkKSIvPgoKICA8IS0tIOW6lemDqOa4kOWPmOWxgiAtLT4KICA8cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCIgZmlsbD0idXJsKCNib3R0b21GYWRlKSIvPgoKICA8IS0tIOiDjOaZr+eUtei3r+e6ueeQhue6vyAtLT4KICA8ZyBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS1vcGFjaXR5PSIwLjA4IiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGxpbmUgeDE9IjAiIHkxPSI0MCIgeDI9IjgwMCIgeTI9IjQwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjgwIiB4Mj0iODAwIiB5Mj0iODAiLz4KICAgIDxsaW5lIHgxPSIwIiB5MT0iMTIwIiB4Mj0iODAwIiB5Mj0iMTIwIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjE2MCIgeDI9IjgwMCIgeTI9IjE2MCIvPgogICAgPGxpbmUgeDE9IjIwMCIgeTE9IjAiIHgyPSIyMDAiIHkyPSIyMDAiLz4KICAgIDxsaW5lIHgxPSI0MDAiIHkxPSIwIiB4Mj0iNDAwIiB5Mj0iMjAwIi8+CiAgICA8bGluZSB4MT0iNjAwIiB5MT0iMCIgeDI9IjYwMCIgeTI9IjIwMCIvPgogIDwvZz4KCiAgPCEtLSDnlLXot6/oioLngrkgLS0+CiAgPGcgZmlsbD0iI0MwMzkyQiIgZmlsbC1vcGFjaXR5PSIwLjEyIj4KICAgIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjQwIiByPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSI0MDAiIGN5PSI4MCIgcj0iMyIvPgogICAgPGNpcmNsZSBjeD0iNjAwIiBjeT0iNDAiIHI9IjMiLz4KICAgIDxjaXJjbGUgY3g9IjIwMCIgY3k9IjEyMCIgcj0iMyIvPgogICAgPGNpcmNsZSBjeD0iNjAwIiBjeT0iMTYwIiByPSIzIi8+CiAgICA8Y2lyY2xlIGN4PSI0MDAiIGN5PSIxNjAiIHI9IjMiLz4KICA8L2c+CgogIDwhLS0g5bem5L6n6KOF6aWw6Iux5paHIC0tPgogIDx0ZXh0IHg9IjMwIiB5PSIxMzAiIGZvbnQtZmFtaWx5PSInQXJpYWwgQmxhY2snLCAnSGVsdmV0aWNhJywgc2Fucy1zZXJpZiIgZm9udC1zaXplPSI1MiIgZm9udC13ZWlnaHQ9IjkwMCIgZmlsbD0iI0MwMzkyQiIgZmlsbC1vcGFjaXR5PSIwLjA4IiBsZXR0ZXItc3BhY2luZz0iMyI+U3BhY2U8L3RleHQ+CiAgPHRleHQgeD0iMzAiIHk9IjE3MiIgZm9udC1mYW1pbHk9IidBcmlhbCBCbGFjaycsICdIZWx2ZXRpY2EnLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjM4IiBmb250LXdlaWdodD0iOTAwIiBmaWxsPSIjRTZCMEFBIiBmaWxsLW9wYWNpdHk9IjAuMDYiIGxldHRlci1zcGFjaW5nPSIyIj5XZWF0aGVyPC90ZXh0PgoKICA8IS0tIOS6keWxgiAtIOW3puS4iyAtLT4KICA8ZyBmaWxsPSIjRTZCMEFBIiBmaWxsLW9wYWNpdHk9IjAuMTAiPgogICAgPGVsbGlwc2UgY3g9IjEyMCIgY3k9IjE3MCIgcng9IjU1IiByeT0iMTgiLz4KICAgIDxlbGxpcHNlIGN4PSI5NSIgY3k9IjE2MiIgcng9IjM1IiByeT0iMTQiLz4KICAgIDxlbGxpcHNlIGN4PSIxNDUiIGN5PSIxNjQiIHJ4PSIzMCIgcnk9IjEyIi8+CiAgPC9nPgoKICA8IS0tIOS6keWxgiAtIOWPs+S4iyAtLT4KICA8ZyBmaWxsPSIjRTZCMEFBIiBmaWxsLW9wYWNpdHk9IjAuMDgiPgogICAgPGVsbGlwc2UgY3g9IjY1MCIgY3k9IjE4MCIgcng9IjY1IiByeT0iMTYiLz4KICAgIDxlbGxpcHNlIGN4PSI2MjUiIGN5PSIxNzIiIHJ4PSI0MCIgcnk9IjEyIi8+CiAgICA8ZWxsaXBzZSBjeD0iNjgwIiBjeT0iMTc0IiByeD0iMzUiIHJ5PSIxMCIvPgogIDwvZz4KCiAgPCEtLSDkupHlsYIgLSDkuK3pl7TlgY/lj7MgLS0+CiAgPGcgZmlsbD0iI0U2QjBBQSIgZmlsbC1vcGFjaXR5PSIwLjA2Ij4KICAgIDxlbGxpcHNlIGN4PSI1MjAiIGN5PSIxNTUiIHJ4PSI0NSIgcnk9IjEyIi8+CiAgICA8ZWxsaXBzZSBjeD0iNTAwIiBjeT0iMTQ4IiByeD0iMzAiIHJ5PSIxMCIvPgogICAgPGVsbGlwc2UgY3g9IjU0MCIgY3k9IjE0OSIgcng9IjI1IiByeT0iOSIvPgogIDwvZz4KCiAgPCEtLSA9PT09PSDljavmmJ/kuLvkvZPvvIjlsYXkuK3lgY/lj7PvvIkgPT09PT0gLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNDgwLCA3MCkiPgogICAgPCEtLSDljavmmJ/kuLvkvZMgLS0+CiAgICA8cmVjdCB4PSItMTgiIHk9Ii0xMiIgd2lkdGg9IjM2IiBoZWlnaHQ9IjI0IiByeD0iMyIgZmlsbD0idXJsKCNzYXRCb2R5KSIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utd2lkdGg9IjEiLz4KCiAgICA8IS0tIOW3puWkqumYs+iDveadvyAtLT4KICAgIDxyZWN0IHg9Ii02OCIgeT0iLTEwIiB3aWR0aD0iNDYiIGhlaWdodD0iMjAiIHJ4PSIyIiBmaWxsPSJ1cmwoI3NvbGFyR3JhZCkiIHN0cm9rZT0iI0U2QjBBQSIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1vcGFjaXR5PSIwLjYiLz4KICAgIDwhLS0g5aSq6Ziz6IO95p2/572R5qC8IC0tPgogICAgPGxpbmUgeDE9Ii01NyIgeTE9Ii0xMCIgeDI9Ii01NyIgeTI9IjEwIiBzdHJva2U9IiNFNkIwQUEiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMC41Ii8+CiAgICA8bGluZSB4MT0iLTQ1IiB5MT0iLTEwIiB4Mj0iLTQ1IiB5Mj0iMTAiIHN0cm9rZT0iI0U2QjBBQSIgc3Ryb2tlLW9wYWNpdHk9IjAuMyIgc3Ryb2tlLXdpZHRoPSIwLjUiLz4KICAgIDxsaW5lIHgxPSItMzMiIHkxPSItMTAiIHgyPSItMzMiIHkyPSIxMCIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPGxpbmUgeDE9Ii02OCIgeTE9IjAiIHgyPSItMjIiIHkyPSIwIiBzdHJva2U9IiNFNkIwQUEiIHN0cm9rZS1vcGFjaXR5PSIwLjMiIHN0cm9rZS13aWR0aD0iMC41Ii8+CgogICAgPCEtLSDlj7PlpKrpmLPog73mnb8gLS0+CiAgICA8cmVjdCB4PSIyMiIgeT0iLTEwIiB3aWR0aD0iNDYiIGhlaWdodD0iMjAiIHJ4PSIyIiBmaWxsPSJ1cmwoI3NvbGFyR3JhZCkiIHN0cm9rZT0iI0U2QjBBQSIgc3Ryb2tlLXdpZHRoPSIwLjUiIHN0cm9rZS1vcGFjaXR5PSIwLjYiLz4KICAgIDwhLS0g5aSq6Ziz6IO95p2/572R5qC8IC0tPgogICAgPGxpbmUgeDE9IjMzIiB5MT0iLTEwIiB4Mj0iMzMiIHkyPSIxMCIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPGxpbmUgeDE9IjQ1IiB5MT0iLTEwIiB4Mj0iNDUiIHkyPSIxMCIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPGxpbmUgeDE9IjU3IiB5MT0iLTEwIiB4Mj0iNTciIHkyPSIxMCIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjAuNSIvPgogICAgPGxpbmUgeDE9IjIyIiB5MT0iMCIgeDI9IjY4IiB5Mj0iMCIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utb3BhY2l0eT0iMC4zIiBzdHJva2Utd2lkdGg9IjAuNSIvPgoKICAgIDwhLS0g5aSp57q/5p2GIC0tPgogICAgPGxpbmUgeDE9IjAiIHkxPSItMTIiIHgyPSIwIiB5Mj0iLTMyIiBzdHJva2U9IiNFNkIwQUEiIHN0cm9rZS13aWR0aD0iMS41Ii8+CiAgICA8IS0tIOWkqee6v+einyAtLT4KICAgIDxlbGxpcHNlIGN4PSIwIiBjeT0iLTMzIiByeD0iOCIgcnk9IjMiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2QjBBQSIgc3Ryb2tlLXdpZHRoPSIxLjIiLz4KICAgIDxjaXJjbGUgY3g9IjAiIGN5PSItMzMiIHI9IjEuNSIgZmlsbD0iI0U2QjBBQSIvPgoKICAgIDwhLS0g5bqV6YOo5Lyg5oSf5ZmoIC0tPgogICAgPHJlY3QgeD0iLTYiIHk9IjEyIiB3aWR0aD0iMTIiIGhlaWdodD0iNCIgcng9IjEiIGZpbGw9IiNFNkIwQUEiIGZpbGwtb3BhY2l0eT0iMC41Ii8+CiAgPC9nPgoKICA8IS0tID09PT09IOS/oeWPt+azou+8iOS7juWNq+aYn+WQkeS4i+aWueWPkeWwhO+8iSA9PT09PSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0ODAsIDEwNSkiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIxLjIiIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTS0xMiw1IFEwLDE4IDEyLDUiIHN0cm9rZS1vcGFjaXR5PSIwLjUiLz4KICAgIDxwYXRoIGQ9Ik0tMjIsMCBRMCwyOCAyMiwwIiBzdHJva2Utb3BhY2l0eT0iMC4zNSIvPgogICAgPHBhdGggZD0iTS0zMiwtNSBRMCwzOCAzMiwtNSIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogICAgPHBhdGggZD0iTS00MiwtMTAgUTAsNDggNDIsLTEwIiBzdHJva2Utb3BhY2l0eT0iMC4xIi8+CiAgPC9nPgoKICA8IS0tID09PT09IOS/oeWPt+azou+8iOS7juWNq+aYn+WQkeS4iuaWueWPkeWwhO+8iSA9PT09PSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0ODAsIDM4KSIgc3Ryb2tlPSIjRTZCMEFBIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPHBhdGggZD0iTS0xMCwwIFEwLC0xMiAxMCwwIiBzdHJva2Utb3BhY2l0eT0iMC4zIi8+CiAgICA8cGF0aCBkPSJNLTE4LDIgUTAsLTIwIDE4LDIiIHN0cm9rZS1vcGFjaXR5PSIwLjIiLz4KICAgIDxwYXRoIGQ9Ik0tMjYsNCBRMCwtMjggMjYsNCIgc3Ryb2tlLW9wYWNpdHk9IjAuMSIvPgogIDwvZz4KCiAgPCEtLSDmlbDmja7oiq/niYfoo4XppbAgLSDlt6bkvqcgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMzAwLCA2MCkiPgogICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiByeD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjEiIHN0cm9rZS1vcGFjaXR5PSIwLjI1Ii8+CiAgICA8IS0tIOiKr+eJh+W8leiEmiAtLT4KICAgIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSItNSIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogICAgPGxpbmUgeDE9IjEyIiB5MT0iMCIgeDI9IjEyIiB5Mj0iLTUiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1vcGFjaXR5PSIwLjIiLz4KICAgIDxsaW5lIHgxPSIyMCIgeTE9IjAiIHgyPSIyMCIgeTI9Ii01IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+CiAgICA8bGluZSB4MT0iNCIgeTE9IjI0IiB4Mj0iNCIgeTI9IjI5IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+CiAgICA8bGluZSB4MT0iMTIiIHkxPSIyNCIgeDI9IjEyIiB5Mj0iMjkiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1vcGFjaXR5PSIwLjIiLz4KICAgIDxsaW5lIHgxPSIyMCIgeTE9IjI0IiB4Mj0iMjAiIHkyPSIyOSIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogICAgPGxpbmUgeDE9IjAiIHkxPSI4IiB4Mj0iLTUiIHkyPSI4IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+CiAgICA8bGluZSB4MT0iMCIgeTE9IjE2IiB4Mj0iLTUiIHkyPSIxNiIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogICAgPGxpbmUgeDE9IjI0IiB5MT0iOCIgeDI9IjI5IiB5Mj0iOCIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMiIvPgogICAgPGxpbmUgeDE9IjI0IiB5MT0iMTYiIHgyPSIyOSIgeTI9IjE2IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC44IiBzdHJva2Utb3BhY2l0eT0iMC4yIi8+CiAgICA8IS0tIOiKr+eJh+WGheaguCAtLT4KICAgIDxyZWN0IHg9IjYiIHk9IjYiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxMiIgcng9IjEiIGZpbGw9IiNDMDM5MkIiIGZpbGwtb3BhY2l0eT0iMC4xNSIvPgogIDwvZz4KCiAgPCEtLSDmlbDmja7oiq/niYfoo4XppbAgLSDlj7PkvqcgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNjIwLCA4NSkiPgogICAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjIwIiBoZWlnaHQ9IjIwIiByeD0iMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgc3Ryb2tlLW9wYWNpdHk9IjAuMTgiLz4KICAgIDxsaW5lIHgxPSI0IiB5MT0iMCIgeDI9IjQiIHkyPSItNCIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuNiIgc3Ryb2tlLW9wYWNpdHk9IjAuMTQiLz4KICAgIDxsaW5lIHgxPSIxMCIgeTE9IjAiIHgyPSIxMCIgeTI9Ii00IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC42IiBzdHJva2Utb3BhY2l0eT0iMC4xNCIvPgogICAgPGxpbmUgeDE9IjE2IiB5MT0iMCIgeDI9IjE2IiB5Mj0iLTQiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIwLjYiIHN0cm9rZS1vcGFjaXR5PSIwLjE0Ii8+CiAgICA8bGluZSB4MT0iNCIgeTE9IjIwIiB4Mj0iNCIgeTI9IjI0IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC42IiBzdHJva2Utb3BhY2l0eT0iMC4xNCIvPgogICAgPGxpbmUgeDE9IjEwIiB5MT0iMjAiIHgyPSIxMCIgeTI9IjI0IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC42IiBzdHJva2Utb3BhY2l0eT0iMC4xNCIvPgogICAgPGxpbmUgeDE9IjE2IiB5MT0iMjAiIHgyPSIxNiIgeTI9IjI0IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC42IiBzdHJva2Utb3BhY2l0eT0iMC4xNCIvPgogICAgPHJlY3QgeD0iNSIgeT0iNSIgd2lkdGg9IjEwIiBoZWlnaHQ9IjEwIiByeD0iMSIgZmlsbD0iI0MwMzkyQiIgZmlsbC1vcGFjaXR5PSIwLjEyIi8+CiAgPC9nPgoKICA8IS0tIOi9qOmBk+W8p+e6vyAtLT4KICA8cGF0aCBkPSJNMzIwLDMwIFE0ODAsMCA2NDAsMzAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0U2QjBBQSIgc3Ryb2tlLXdpZHRoPSIwLjgiIHN0cm9rZS1vcGFjaXR5PSIwLjE1IiBzdHJva2UtZGFzaGFycmF5PSI2LDQiLz4KICA8cGF0aCBkPSJNMzAwLDM1IFE0ODAsNSA2NjAsMzUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIwLjYiIHN0cm9rZS1vcGFjaXR5PSIwLjEiIHN0cm9rZS1kYXNoYXJyYXk9IjQsNiIvPgoKICA8IS0tIOaYn+eCueijhemlsCAtLT4KICA8ZyBmaWxsPSIjRTZCMEFBIj4KICAgIDxjaXJjbGUgY3g9IjM0MCIgY3k9IjI1IiByPSIxLjIiIG9wYWNpdHk9IjAuMyIvPgogICAgPGNpcmNsZSBjeD0iNDIwIiBjeT0iMTgiIHI9IjAuOCIgb3BhY2l0eT0iMC4yNSIvPgogICAgPGNpcmNsZSBjeD0iNTYwIiBjeT0iMjIiIHI9IjEiIG9wYWNpdHk9IjAuMiIvPgogICAgPGNpcmNsZSBjeD0iNzAwIiBjeT0iMzAiIHI9IjEuMiIgb3BhY2l0eT0iMC4xNSIvPgogICAgPGNpcmNsZSBjeD0iMTYwIiBjeT0iMzUiIHI9IjAuOCIgb3BhY2l0eT0iMC4yIi8+CiAgICA8Y2lyY2xlIGN4PSIyNTAiIGN5PSIyMCIgcj0iMSIgb3BhY2l0eT0iMC4xOCIvPgogICAgPGNpcmNsZSBjeD0iNzUwIiBjeT0iNTAiIHI9IjAuOCIgb3BhY2l0eT0iMC4xNSIvPgogIDwvZz4KCiAgPCEtLSDmlbDmja7mtYHnur8gLS0+CiAgPGcgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLW9wYWNpdHk9IjAuMTIiPgogICAgPHBhdGggZD0iTTMzMCw3MiBMMzU1LDcyIEwzNjAsNjUgTDM4MCw2NSIvPgogICAgPHBhdGggZD0iTTMzMCw3NiBMMzUwLDc2IEwzNTUsODIgTDM3NSw4MiBMMzgwLDc2IEwzOTUsNzYiLz4KICAgIDxwYXRoIGQ9Ik01NTUsOTAgTDU3NSw5MCBMNTgwLDg0IEw2MDAsODQiLz4KICAgIDxwYXRoIGQ9Ik01NzAsMTAwIEw1OTAsMTAwIEw1OTUsMTA2IEw2MTAsMTA2Ii8+CiAgPC9nPgoKICA8IS0tIOaVsOaNrua1geiKgueCuSAtLT4KICA8ZyBmaWxsPSIjQzAzOTJCIiBmaWxsLW9wYWNpdHk9IjAuMTgiPgogICAgPGNpcmNsZSBjeD0iMzgwIiBjeT0iNjUiIHI9IjIiLz4KICAgIDxjaXJjbGUgY3g9IjM5NSIgY3k9Ijc2IiByPSIxLjUiLz4KICAgIDxjaXJjbGUgY3g9IjYwMCIgY3k9Ijg0IiByPSIyIi8+CiAgICA8Y2lyY2xlIGN4PSI2MTAiIGN5PSIxMDYiIHI9IjEuNSIvPgogIDwvZz4KCiAgPCEtLSDlupXpg6jmuJDlj5jopobnm5blsYLvvIjmnIDnu4jlsYLvvIkgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYm90dG9tRmFkZSkiLz4KPC9zdmc+" alt="Fengyun-4C: China&#x27;s Most Capable Weather Satellite Strengthens Disaster Defense">
+    <div class="three-col-flow">
+        <p class="article-text first-para drop-C">The China Meteorological Administration has released the first images from the newly launched Fengyun-4C satellite, demonstrating the nation&#x27;s capability to monitor conditions from the sun to Earth in near real time. Launched on Dec 27 from the Xichang Satellite Launch Center, the satellite began its in-orbit tests in early January, and it is currently the world&#x27;s most capable single geostationary meteorological satellite in orbit in terms of comprehensive observation capabilities, according to the administration. The deployment of the Fengyun-4C follows the central government&#x27;s policy directives for more robust monitoring of extreme weather conditions and stronger disaster prevention efforts, aiming to strengthen the first line of defense against meteorological disasters and expected to enter its operational trial phase before this year&#x27;s primary flood season.</p>
+        <p class="article-text">The satellite carries six payloads meeting advanced international standards, with its geostationary radiation imager having produced detailed animations of short-wave trough cloud systems, enabling forecasters to distinguish high-level cirrus clouds with unprecedented clarity. Meanwhile, an interference-based vertical atmospheric sounder provided refined spectral data, capturing more temperature layers than previous models, which improves the accuracy of global numerical weather prediction models. Additionally, a lightning imager mapped convective activity over South Asia, tracking storm cells and lightning events across Bangladesh and Myanmar.</p>
+        <p class="article-text">Beyond Earth observation, new ultraviolet and X-ray sensors captured solar flares and ionospheric glow phenomena, helping mitigate the impact of solar activity on global communication, navigation and positioning systems. The Fengyun-4C is set to become a primary data source for MAZU, China&#x27;s AI-powered early warning system, and upon reaching full service will support international efforts in global monitoring, forecasting and environmental governance. Chen Zhenlin, director of the China Meteorological Administration, noted that China has built the world&#x27;s largest and most comprehensive meteorological observation system, with 10 Fengyun weather satellites currently in orbit, making it the only country with meteorological satellites covering four near-Earth orbital types.</p>
+        <div class="questions-header">Questions</div>
+        <div class="question-item">
+        <div class="question-title">Q1. (detail) According to the passage, what contribution does the interference-based vertical atmospheric sounder make to weather prediction?</div>
+        <ul class="question-options">
+            <li>A. It improves the accuracy of global numerical weather prediction models by capturing more temperature layers.</li>
+            <li>B. It distinguishes high-level cirrus clouds with unprecedented clarity through detailed cloud system animations.</li>
+            <li>C. It maps convective activity and tracks lightning events across South Asia to enhance storm forecasting.</li>
+            <li>D. It captures solar flares and ionospheric glow to mitigate the impact of solar activity on communication systems.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q2. (inference) What can be inferred about the relationship between the central government&#x27;s policy directives and the deployment of the Fengyun-4C?</div>
+        <ul class="question-options">
+            <li>A. The government&#x27;s disaster prevention policies directly motivated the timely deployment of the satellite before the flood season.</li>
+            <li>B. The satellite&#x27;s launch was primarily driven by China&#x27;s ambition to surpass other nations in geostationary satellite technology.</li>
+            <li>C. The policy directives were formulated as a response to the satellite&#x27;s successful in-orbit tests in early January.</li>
+            <li>D. The satellite was deployed to replace older Fengyun satellites that had become obsolete due to extreme weather events.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q3. (attitude) What is the author&#x27;s attitude toward China&#x27;s meteorological observation achievements?</div>
+        <ul class="question-options">
+            <li>A. Appreciative</li>
+            <li>B. Skeptical</li>
+            <li>C. Indifferent</li>
+            <li>D. Cautious</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q4. (structure) Which of the following best describes the organizational pattern of the passage?</div>
+        <ul class="question-options">
+            <li>A. Introduction of a technological milestone, followed by specific technical capabilities, and concluding with broader significance and future impact.</li>
+            <li>B. Chronological account of satellite development from design to launch, followed by a comparison with previous models.</li>
+            <li>C. Problem-solution framework: presenting meteorological disasters first and then detailing how the satellite addresses each one.</li>
+            <li>D. Contrast between China&#x27;s and other countries&#x27; satellite capabilities, followed by an evaluation of international cooperation prospects.</li>
+        </ul>
+    </div>
+    </div>
+</div><div class="half-page">
+    <div class="article-header">
+    <span class="article-tag red">D</span>
+    <div>
+        <div class="article-title">Policy Push for Better Children&#x27;s Medicines</div>
+        <div class="article-source">China Daily | health_environment</div>
+    </div>
+</div>
+    <img class="article-image" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA4MDAgMjAwIiB3aWR0aD0iODAwIiBoZWlnaHQ9IjIwMCI+CiAgPGRlZnM+CiAgICA8IS0tIEJvdHRvbSBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0iYm90dG9tR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTZCMEFBIiBzdG9wLW9wYWNpdHk9IjAiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjRTZCMEFBIiBzdG9wLW9wYWNpdHk9IjAuMzUiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIEJhY2tncm91bmQgc3VidGxlIGdyYWRpZW50IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJiZ0dyYWQiIHgxPSIwIiB5MT0iMCIgeDI9IjEiIHkyPSIwIj4KICAgICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI0ZERjJGMCIvPgogICAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNGRkZGRkYiLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgICA8IS0tIFNoaWVsZCBncmFkaWVudCAtLT4KICAgIDxsaW5lYXJHcmFkaWVudCBpZD0ic2hpZWxkR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjQzAzOTJCIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iIzkyMkIyMSIvPgogICAgPC9saW5lYXJHcmFkaWVudD4KICAgIDwhLS0gQm90dGxlIGdyYWRpZW50IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJib3R0bGVHcmFkIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+CiAgICAgIDxzdG9wIG9mZnNldD0iMCUiIHN0b3AtY29sb3I9IiNFNkIwQUEiLz4KICAgICAgPHN0b3Agb2Zmc2V0PSIxMDAlIiBzdG9wLWNvbG9yPSIjQzAzOTJCIi8+CiAgICA8L2xpbmVhckdyYWRpZW50PgogICAgPCEtLSBMZWFmIGdyYWRpZW50IC0tPgogICAgPGxpbmVhckdyYWRpZW50IGlkPSJsZWFmR3JhZCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPgogICAgICA8c3RvcCBvZmZzZXQ9IjAlIiBzdG9wLWNvbG9yPSIjRTZCMEFBIi8+CiAgICAgIDxzdG9wIG9mZnNldD0iMTAwJSIgc3RvcC1jb2xvcj0iI0MwMzkyQiIgc3RvcC1vcGFjaXR5PSIwLjciLz4KICAgIDwvbGluZWFyR3JhZGllbnQ+CiAgPC9kZWZzPgoKICA8IS0tIEJhY2tncm91bmQgLS0+CiAgPHJlY3Qgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYmdHcmFkKSIvPgoKICA8IS0tIERlY29yYXRpdmUgYmFja2dyb3VuZCBjaXJjbGVzIC0tPgogIDxjaXJjbGUgY3g9IjY4MCIgY3k9IjQwIiByPSI4MCIgZmlsbD0iI0MwMzkyQiIgb3BhY2l0eT0iMC4wNCIvPgogIDxjaXJjbGUgY3g9IjcyMCIgY3k9IjE2MCIgcj0iNjAiIGZpbGw9IiNDMDM5MkIiIG9wYWNpdHk9IjAuMDUiLz4KICA8Y2lyY2xlIGN4PSIxNTAiIGN5PSIxODAiIHI9IjUwIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjAzIi8+CgogIDwhLS0gTGVmdCBkZWNvcmF0aXZlIEVuZ2xpc2ggdGV4dCAtLT4KICA8dGV4dCB4PSIzMCIgeT0iODUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiIGZvbnQtc2l6ZT0iNTIiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjA3IiBsZXR0ZXItc3BhY2luZz0iMiI+SGVhbHRoPC90ZXh0PgogIDx0ZXh0IHg9IjUwIiB5PSIxMzUiIGZvbnQtZmFtaWx5PSJHZW9yZ2lhLCAnVGltZXMgTmV3IFJvbWFuJywgc2VyaWYiIGZvbnQtc2l6ZT0iMzYiIGZvbnQtd2VpZ2h0PSJib2xkIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjA2IiBsZXR0ZXItc3BhY2luZz0iMyI+w5c8L3RleHQ+CiAgPHRleHQgeD0iODAiIHk9IjEzNSIgZm9udC1mYW1pbHk9Ikdlb3JnaWEsICdUaW1lcyBOZXcgUm9tYW4nLCBzZXJpZiIgZm9udC1zaXplPSI0MiIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiNDMDM5MkIiIG9wYWNpdHk9IjAuMDciIGxldHRlci1zcGFjaW5nPSIyIj5Qb2xpY3k8L3RleHQ+CgogIDwhLS0gPT09IENlbnRyYWwgSWNvbiBDb21wb3NpdGlvbiA9PT0gLS0+CgogIDwhLS0gTWVkaWNhbCBjcm9zcyAobGVmdCBvZiBjZW50ZXIpIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDMxMCwgNTUpIj4KICAgIDxyZWN0IHg9IjE1IiB5PSIwIiB3aWR0aD0iMzAiIGhlaWdodD0iODAiIHJ4PSI0IiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjg1Ii8+CiAgICA8cmVjdCB4PSIwIiB5PSIxNSIgd2lkdGg9IjYwIiBoZWlnaHQ9IjUwIiByeD0iNCIgZmlsbD0iI0MwMzkyQiIgb3BhY2l0eT0iMC44NSIvPgogICAgPCEtLSBXaGl0ZSBjcm9zcyBjdXRvdXQgLS0+CiAgICA8cmVjdCB4PSIyMiIgeT0iMTAiIHdpZHRoPSIxNiIgaGVpZ2h0PSI2MCIgcng9IjIiIGZpbGw9IndoaXRlIiBvcGFjaXR5PSIwLjkiLz4KICAgIDxyZWN0IHg9IjgiIHk9IjI0IiB3aWR0aD0iNDQiIGhlaWdodD0iMzIiIHJ4PSIyIiBmaWxsPSJ3aGl0ZSIgb3BhY2l0eT0iMC45Ii8+CiAgPC9nPgoKICA8IS0tIE1lZGljaW5lIGJvdHRsZSAoY2VudGVyKSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg0MDAsIDQyKSI+CiAgICA8IS0tIEJvdHRsZSBjYXAgLS0+CiAgICA8cmVjdCB4PSIxMiIgeT0iMCIgd2lkdGg9IjM2IiBoZWlnaHQ9IjE0IiByeD0iMyIgZmlsbD0iIzkyMkIyMSIvPgogICAgPCEtLSBCb3R0bGUgbmVjayAtLT4KICAgIDxyZWN0IHg9IjE4IiB5PSIxNCIgd2lkdGg9IjI0IiBoZWlnaHQ9IjEwIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjkiLz4KICAgIDwhLS0gQm90dGxlIGJvZHkgLS0+CiAgICA8cmVjdCB4PSI1IiB5PSIyNCIgd2lkdGg9IjUwIiBoZWlnaHQ9IjcwIiByeD0iNiIgZmlsbD0idXJsKCNib3R0bGVHcmFkKSIvPgogICAgPCEtLSBMYWJlbCAtLT4KICAgIDxyZWN0IHg9IjExIiB5PSIzOCIgd2lkdGg9IjM4IiBoZWlnaHQ9IjMwIiByeD0iMyIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuOSIvPgogICAgPCEtLSBDcm9zcyBvbiBsYWJlbCAtLT4KICAgIDxyZWN0IHg9IjI2IiB5PSI0MiIgd2lkdGg9IjgiIGhlaWdodD0iMjIiIHJ4PSIxIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjciLz4KICAgIDxyZWN0IHg9IjE5IiB5PSI0OSIgd2lkdGg9IjIyIiBoZWlnaHQ9IjgiIHJ4PSIxIiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjciLz4KICAgIDwhLS0gTGlxdWlkIGxldmVsIGxpbmUgLS0+CiAgICA8bGluZSB4MT0iMTIiIHkxPSI3OCIgeDI9IjQ4IiB5Mj0iNzgiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMS41IiBvcGFjaXR5PSIwLjQiLz4KICA8L2c+CgogIDwhLS0gU2hpZWxkIChyaWdodCBvZiBjZW50ZXIpIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDQ5MCwgMzgpIj4KICAgIDxwYXRoIGQ9Ik00MCwwIEw3NSwxMiBMNzUsNTUgUTc1LDkwIDQwLDEwNSBRNSw5MCA1LDU1IEw1LDEyIFoiIGZpbGw9InVybCgjc2hpZWxkR3JhZCkiIG9wYWNpdHk9IjAuODUiLz4KICAgIDwhLS0gU2hpZWxkIGlubmVyIGhpZ2hsaWdodCAtLT4KICAgIDxwYXRoIGQ9Ik00MCw4IEw2OCwxOCBMNjgsNTMgUTY4LDgyIDQwLDk1IFExMiw4MiAxMiw1MyBMMTIsMTggWiIgZmlsbD0id2hpdGUiIG9wYWNpdHk9IjAuMTUiLz4KICAgIDwhLS0gQ2hlY2ttYXJrIG9uIHNoaWVsZCAtLT4KICAgIDxwb2x5bGluZSBwb2ludHM9IjI1LDUwIDM2LDY0IDU2LDM4IiBmaWxsPSJub25lIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIgb3BhY2l0eT0iMC45Ii8+CiAgPC9nPgoKICA8IS0tIEJhbGFuY2UvU2NhbGUgKGZhciByaWdodCBhcmVhKSAtLT4KICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSg2MDAsIDQ4KSI+CiAgICA8IS0tIFBpbGxhciAtLT4KICAgIDxyZWN0IHg9IjM4IiB5PSIyMCIgd2lkdGg9IjQiIGhlaWdodD0iNjAiIGZpbGw9IiNDMDM5MkIiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSBCYXNlIC0tPgogICAgPHJlY3QgeD0iMjUiIHk9Ijc4IiB3aWR0aD0iMzAiIGhlaWdodD0iNSIgcng9IjIiIGZpbGw9IiNDMDM5MkIiIG9wYWNpdHk9IjAuNyIvPgogICAgPCEtLSBCZWFtIC0tPgogICAgPGxpbmUgeDE9IjEwIiB5MT0iMjAiIHgyPSI3MCIgeTI9IjIwIiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjgiLz4KICAgIDwhLS0gTGVmdCBwYW4gLS0+CiAgICA8cGF0aCBkPSJNNSwyMCBMNSwzMCBRNSwzOCAxOCwzOCBRMzAsMzggMzAsMzAgTDMwLDIwIiBmaWxsPSJub25lIiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMiIgb3BhY2l0eT0iMC42Ii8+CiAgICA8bGluZSB4MT0iMTAiIHkxPSIzOCIgeDI9IjI4IiB5Mj0iMzgiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIyLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIgb3BhY2l0eT0iMC43Ii8+CiAgICA8IS0tIFJpZ2h0IHBhbiAtLT4KICAgIDxwYXRoIGQ9Ik00OCwyMCBMNDgsMzAgUTQ4LDM4IDYwLDM4IFE3MiwzOCA3MiwzMCBMNzIsMjAiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIyIiBvcGFjaXR5PSIwLjYiLz4KICAgIDxsaW5lIHgxPSI1MCIgeTE9IjM4IiB4Mj0iNzAiIHkyPSIzOCIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjIuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBvcGFjaXR5PSIwLjciLz4KICAgIDwhLS0gVG9wIG9ybmFtZW50IC0tPgogICAgPGNpcmNsZSBjeD0iNDAiIGN5PSIxNyIgcj0iNCIgZmlsbD0iI0MwMzkyQiIgb3BhY2l0eT0iMC43Ii8+CiAgPC9nPgoKICA8IS0tIExlYWYgKGJvdHRvbSBsZWZ0IGRlY29yYXRpdmUpIC0tPgogIDxnIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIwMCwgMTIwKSI+CiAgICA8cGF0aCBkPSJNMCw1MCBRNSwyMCAzNSw1IFE1MCwwIDU1LDEwIFE2MCwyNSA0NSw0NSBRMzAsNTUgMCw1MCBaIiBmaWxsPSJ1cmwoI2xlYWZHcmFkKSIgb3BhY2l0eT0iMC41Ii8+CiAgICA8IS0tIExlYWYgdmVpbiAtLT4KICAgIDxwYXRoIGQ9Ik0xMCw0NSBRMzAsMjUgNDgsMTIiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIxLjIiIG9wYWNpdHk9IjAuNCIvPgogICAgPHBhdGggZD0iTTIwLDQyIFEzMCwzMiAzOCwyMiIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjQzAzOTJCIiBzdHJva2Utd2lkdGg9IjAuOCIgb3BhY2l0eT0iMC4zIi8+CiAgPC9nPgoKICA8IS0tIFNtYWxsIGxlYWYgYWNjZW50ICh1cHBlciByaWdodCkgLS0+CiAgPGcgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoNzIwLCAyNSkgcm90YXRlKDMwKSI+CiAgICA8cGF0aCBkPSJNMCwyNSBRMiwxMCAxOCwyIFEyNSwwIDI3LDUgUTI4LDEyIDIyLDIyIFExNSwyOCAwLDI1IFoiIGZpbGw9IiNFNkIwQUEiIG9wYWNpdHk9IjAuNCIvPgogICAgPHBhdGggZD0iTTUsMjIgUTE0LDEyIDI0LDUiIGZpbGw9Im5vbmUiIHN0cm9rZT0iI0MwMzkyQiIgc3Ryb2tlLXdpZHRoPSIwLjgiIG9wYWNpdHk9IjAuMyIvPgogIDwvZz4KCiAgPCEtLSBEZWNvcmF0aXZlIGRvdHMgcGF0dGVybiAtLT4KICA8Y2lyY2xlIGN4PSIyNjAiIGN5PSIxNzAiIHI9IjIuNSIgZmlsbD0iI0MwMzkyQiIgb3BhY2l0eT0iMC4xMiIvPgogIDxjaXJjbGUgY3g9IjI3NSIgY3k9IjE3NSIgcj0iMS44IiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjEiLz4KICA8Y2lyY2xlIGN4PSIyOTAiIGN5PSIxNjgiIHI9IjIiIGZpbGw9IiNDMDM5MkIiIG9wYWNpdHk9IjAuMSIvPgogIDxjaXJjbGUgY3g9IjMwNSIgY3k9IjE3OCIgcj0iMS41IiBmaWxsPSIjQzAzOTJCIiBvcGFjaXR5PSIwLjA4Ii8+CgogIDwhLS0gSG9yaXpvbnRhbCBhY2NlbnQgbGluZSAtLT4KICA8bGluZSB4MT0iMzAwIiB5MT0iMTY1IiB4Mj0iNzAwIiB5Mj0iMTY1IiBzdHJva2U9IiNDMDM5MkIiIHN0cm9rZS13aWR0aD0iMC41IiBvcGFjaXR5PSIwLjE1Ii8+CgogIDwhLS0gQm90dG9tIGdyYWRpZW50IG92ZXJsYXkgLS0+CiAgPHJlY3QgeT0iMCIgd2lkdGg9IjgwMCIgaGVpZ2h0PSIyMDAiIGZpbGw9InVybCgjYm90dG9tR3JhZCkiLz4KCiAgPCEtLSBUaGluIHRvcCBib3JkZXIgYWNjZW50IC0tPgogIDxyZWN0IHk9IjAiIHdpZHRoPSI4MDAiIGhlaWdodD0iMyIgZmlsbD0iI0MwMzkyQiIgb3BhY2l0eT0iMC42Ii8+Cjwvc3ZnPg==" alt="Policy Push for Better Children&#x27;s Medicines">
+    <div class="three-col-flow">
+        <p class="article-text first-para drop-D">China has issued a joint guideline aimed at improving access to pediatric drugs by boosting research and development while strengthening supply chain stability. Although demand for medicines targeting common childhood diseases can largely be met at present, the National Health Commission acknowledges a persistent shortage in the overall number of pediatric drugs, including child-appropriate dosage forms and strengths. Many drug labels also provide insufficient or substandard information on pediatric use.</p>
+        <p class="article-text">Pharmaceutical companies remain inadequately incentivized to develop and produce pediatric drugs, making the supply of certain low-volume but clinically essential children&#x27;s medicines persistently unreliable. To mitigate these challenges, the guideline calls for refining supporting policies for the priority pediatric drug catalog and granting listed products accelerated review and approval pathways, while also giving such drugs preferential inclusion in the national essential medicines list, major state-level R&amp;D programs, and the national drug reimbursement list. Drug regulators will enhance early communication with developers and support R&amp;D efficiency through rolling data submissions.</p>
+        <p class="article-text">The guideline further supports establishing pediatric research wards at major medical centers and exploring the construction of a national pediatric clinical trial network alongside a cross-institutional ethics review mechanism to pool resources and coordinate participant recruitment. Healthcare institutions will be guided to conduct joint research on drugs suitable for children but lacking pediatric labeling, allowing safety data from Chinese adults to be extrapolated to pediatric populations.</p>
+        <p class="article-text">To strengthen supply, more pediatric medicines will be added to centralized production bases dedicated to manufacturing drugs in short supply, while monitoring of production and specialized materials will be intensified. During seasonal infectious disease outbreaks, coordinated early warning mechanisms will be improved with reinforced supplies of antivirals and pediatric medicines for relieving fever and pain. Commercial healthcare insurers will also be encouraged to develop pediatric insurance products covering innovative drugs and rare disease medications.</p>
+        <div class="questions-header">Questions</div>
+        <div class="question-item">
+        <div class="question-title">Q1. (detail) According to the guideline, which of the following is NOT a preferential measure granted to listed pediatric drugs?</div>
+        <ul class="question-options">
+            <li>A. Accelerated review and approval pathways</li>
+            <li>B. Priority inclusion in the national essential medicines list</li>
+            <li>C. Exclusive patent protection extensions for pediatric formulations</li>
+            <li>D. Preferential inclusion in the national drug reimbursement list</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q2. (inference) What can be inferred about the approach of extrapolating adult safety data to pediatric populations?</div>
+        <ul class="question-options">
+            <li>A. It is intended to replace the need for any pediatric clinical trials entirely.</li>
+            <li>B. It reflects an effort to compensate for the difficulty of enrolling children in clinical studies.</li>
+            <li>C. It is mandated as the primary method for all future pediatric drug approvals.</li>
+            <li>D. It ensures that adult drugs can be directly prescribed to children without labeling changes.</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q3. (attitude) What is the author&#x27;s attitude toward the joint guideline?</div>
+        <ul class="question-options">
+            <li>A. Skeptical</li>
+            <li>B. Supportive</li>
+            <li>C. Indifferent</li>
+            <li>D. Critical</li>
+        </ul>
+    </div>
+        <div class="question-item">
+        <div class="question-title">Q4. (structure) Which of the following best describes the overall structure of the passage?</div>
+        <ul class="question-options">
+            <li>A. Presenting a phenomenon, analyzing its causes, and proposing countermeasures</li>
+            <li>B. Comparing two opposing views and reconciling their differences</li>
+            <li>C. Tracing the historical evolution of a policy and predicting its future</li>
+            <li>D. Illustrating a theory with examples and challenging its validity</li>
+        </ul>
+    </div>
+    </div>
+</div><div class="footer">师倍AI · 外刊英语周周练 — 质量是命 · 减负是刀 · 单品是路</div>
+    </div>
+
+    <div class="page">
+        <div class="masthead">
+    <h1>师倍AI · 外刊英语周周练</h1>
+    <div class="week-info">W2026W19</div>
+    <div class="page-number">3 <span>/ 3</span></div>
+</div><div class="answer-section">
+    <div class="answer-header">
+    <span class="article-tag ">A</span>
+    <div>
+        <div class="article-title">Workplace Childhood Friends: A New Bond</div>
+    </div>
+</div>
+    <div class="answer-choices"><span class="answer-choice">Q1: A</span> <span class="answer-choice">Q2: A</span> <span class="answer-choice">Q3: A</span> <span class="answer-choice">Q4: A</span></div>
+    <div class="explanation-block">
+    <strong>Q1</strong> 细节题：原文事实的精准定位与同义转述<br>
+    推理链：根据第2段，当Chen Xinyi遭遇个人危机时，原文明确写道&quot;a colleague silently took over her workload and comforted her without asking questions&quot;（一位同事默默接手了她的工作并在不追问的情况下安慰她），这与选项A的表述&quot;A colleague quietly took over her work and comforted her without asking questions&quot;完全一致，属于原文信息的同义转述，因此A为正确答案。<br>
+    排除链：选项B属于无中生有（fabrication），原文仅提到Chen被派往北京培训六个月，从未提及她被送回西安恢复，&quot;sent back to Xi&#x27;an&quot;是凭空捏造的信息。选项C属于范围错位（scope_shift），原文提到约50名新员工是一起参加培训的总人数，但帮助Chen的是&quot;a colleague&quot;（一位同事），并非50人集体组织援助，选项将培训群体的规模与帮助行为混淆，扩大了行动的范围。选项D属于无关信息（irrelevant_answer），原文明确说是&quot;a colleague&quot;自发帮助Chen，从未提及是manager（经理）安排的，也未使用&quot;temporarily&quot;等表述，选项引入了管理层安排这一原文不存在的角色和行为主体，属于凭空添加信息。
+</div><div class="explanation-block">
+    <strong>Q2</strong> 细节题：跨行业友谊功能的对比与区分<br>
+    推理链：根据第3段，原文明确指出&quot;In the civil service, they act as a safeguard against professional isolation&quot;（在公务员领域，这种友谊起到抵御职业孤立的作用），同时指出&quot;in the technology sector, some young workers even bond over shared personality types&quot;（在科技行业，一些年轻工作者甚至因共同的性格类型而结交），选项A精准概括了这两个行业友谊功能的不同之处，与原文表述一致，因此A为正确答案。<br>
+    排除链：选项B属于范围错位（scope_shift），原文明确指出公务员领域的友谊功能是抵御职业孤立，而科技行业是因共同性格类型而结交，两者功能截然不同，选项B将&quot;safeguard against professional isolation&quot;这一仅适用于公务员领域的功能强行套用到科技行业，混淆了不同行业的差异化功能。选项C属于无中生有（fabrication），原文提到科技行业的友谊建立在&quot;shared personality types&quot;（共同性格类型）之上，从未提及这种友谊有助于&quot;improve professional skills more quickly&quot;（更快提升职业技能），这是凭空捏造的信息。选项D属于绝对化（absolutization），原文第3段首句虽提到&quot;these friendships serve different roles across professions&quot;，但选项D使用&quot;exactly the same role across all professions&quot;（在所有行业中扮演完全相同的角色）这一绝对化表述，直接与原文&quot;different roles&quot;矛盾，且&quot;career advancement opportunities&quot;也非原文对各行业友谊功能的概括。
+</div><div class="explanation-block">
+    <strong>Q3</strong> 词义猜测题：上下文语境与主题一致性推断词义<br>
+    推理链：根据第4段，&quot;camaraderie&quot;出现在&quot;first-job camaraderie&quot;这一搭配中，且紧跟的解释性语境&quot;it is clear that emotional connection is now valued just as highly as career advancement itself&quot;表明camaraderie与emotional connection（情感联结）密切相关。结合全文主题——入职同期同事之间因共同经历而建立的深厚信任与友谊，可推断camaraderie意为&quot;基于共同经历的相互信任与友谊&quot;，与选项A的&quot;Mutual trust and friendship among people who share experiences&quot;完全吻合，因此A为正确答案。<br>
+    排除链：选项B属于概念偷换（concept_swap），将camaraderie（同袍情谊、同志情谊）曲解为&quot;professional competition for career advancement&quot;（职业晋升竞争），把文中代表合作与情感联结的词偷换为与之对立的竞争概念，与原文强调的emotional connection背道而驰。选项C属于范围错位（scope_shift），&quot;formal networking strategies&quot;对应的是第1段中提到的&quot;strategic networking common among senior managers&quot;（资深经理的战略性社交），这是原文用来与&quot;workplace childhood friends&quot;进行对比的对象，而非camaraderie本身的含义，选项将对比项的特征张冠李戴到了目标词上。选项D属于立场反转（stance_reversal），camaraderie表示的是人与人之间的情谊与团结，而&quot;a feeling of loneliness&quot;（孤独感）恰好是其反义，原文中loneliness/isolation是需要被友谊抵御的负面状态，选项将词义完全颠倒了。
+</div><div class="explanation-block">
+    <strong>Q4</strong> 主旨题：全文核心论点的综合概括<br>
+    推理链：本文围绕&quot;职场发小&quot;这一现象展开，第1段定义该概念并说明其形成原因（共同经历职场初期的困难），第2段以Chen Xinyi和田晓两个案例展示友谊的深厚程度，第3段说明不同行业友谊功能的差异，第4段总结职场文化转变使得这类友谊成为年轻一代重要的情感支撑，并强调emotional connection与career advancement同等重要。选项A&quot;Workplace childhood friendships formed at the start of a career have become an essential source of emotional support for young professionals in China&quot;精准概括了全文的核心论点——入职时建立的职场发小友谊已成为中国年轻职业人不可或缺的情感支持，与第4段&quot;essential emotional support for a generation facing high job mobility&quot;直接呼应，因此A为正确答案。<br>
+    排除链：选项B属于概念偷换（concept_swap），原文第1段明确指出&quot;Unlike the strategic networking common among senior managers, these relationships grow through shared struggles&quot;，即资深经理的战略性社交是与职场发小友谊相对比的对象，选项B却将两者关系颠倒，声称资深经理在采纳初级员工的社交策略，这是对原文对比关系的根本性扭曲。选项C属于绝对化（absolutization），原文第4段指出职场发小友谊已成为&quot;essential emotional support&quot;，但选项C使用&quot;can no longer survive&quot;（无法生存）这一极端表述，将原文的&quot;重要支持&quot;夸大为&quot;没有就活不下去&quot;，程度严重失当，且原文从未做出如此绝对的论断。选项D属于因果倒置（causal_reversal），原文第4段提到&quot;hashtags related to first-job camaraderie surging on social media&quot;，社交媒体上的热门话题是职场发小现象流行的表现和反映，而非其原因，选项D将结果（社交媒体热度）说成原因（友谊流行的首要原因），因果逻辑完全颠倒。
+</div>
+    <div class="traps-section">Q1-B [fabrication]: <br>Q1-C [scope_shift]: <br>Q1-D [irrelevant_answer]: <br>Q2-B [scope_shift]: <br>Q2-C [fabrication]: <br>Q2-D [absolutization]: <br>Q3-B [concept_swap]: <br>Q3-C [scope_shift]: <br>Q3-D [stance_reversal]: <br>Q4-B [concept_swap]: <br>Q4-C [absolutization]: <br>Q4-D [causal_reversal]: </div>
+    <div class="word-bank"><strong>新搭配</strong><br>• <strong>gain popularity</strong> — 获得流行；变得受欢迎<br>• <strong>steep learning curve</strong> — 陡峭的学习曲线；学习难度大、进步快的过程<br>• <strong>take over one&#x27;s workload</strong> — 接手某人的工作负担<br>• <strong>bond over</strong> — 因……而建立情谊；因……而产生纽带<br>• <strong>move away from</strong> — 逐渐远离；逐步摆脱<br><br><strong>熟词生义</strong><br>• <strong>bond</strong>：常见义"纽带；债券（名词常用义）" → 文中义"建立深厚的情感联系（动词，指人与人之间因共同经历而形成亲密关系）"<br>• <strong>safeguard</strong>：常见义"安全装置；保护措施（名词，偏物理/制度层面）" → 文中义"抵御心理孤立的屏障（名词，用于抽象的情感保护语境）"<br><br><strong>易错点</strong><br>• 绝对化陷阱：将原文的相对表述夸大为极端说法。例如Q2选项D用&#x27;exactly the same role across all professions&#x27;与原文&#x27;different roles&#x27;矛盾，Q4选项C用&#x27;can no longer survive&#x27;将原文的&#x27;essential emotional support&#x27;夸大为生存必需。此类陷阱利用&#x27;all&#x27;&#x27;exactly&#x27;&#x27;can no longer&#x27;等绝对化措辞扭曲原文程度。（Q2）💡 看到选项中出现&#x27;all&#x27;&#x27;exactly the same&#x27;&#x27;can no longer&#x27;&#x27;cannot without&#x27;等绝对化措辞时，务必回原文核实程度，原文通常使用&#x27;essential&#x27;&#x27;different roles&#x27;等相对准确的表述。<br>• 因果倒置陷阱：将结果说成原因，或因果方向完全颠倒。如Q4选项D称&#x27;social media is the primary reason&#x27;，而原文中社交媒体热门话题是职场发小现象流行的表现和反映，而非其成因。（Q4）💡 当选项使用&#x27;the primary reason&#x27;&#x27;is the cause of&#x27;等因果表述时，需回到原文判断因果关系方向：是A导致B，还是B反映了A？不要把现象的表现当作原因。<br>• 概念偷换/范围错位陷阱：将原文中用来对比的对象的特征张冠李戴到目标概念上。如Q3选项C将第1段&#x27;strategic networking common among senior managers&#x27;的特征说成&#x27;camaraderie&#x27;的含义，Q2选项B将仅适用于公务员行业的&#x27;safeguard against professional isolation&#x27;强行套用到科技行业。（Q3）💡 词义猜测题和细节题中，若干扰项的含义恰好来自原文中与之对比的概念，这是典型的概念偷换；做题时需明确区分&#x27;目标概念&#x27;和&#x27;对比对象&#x27;，不要把对比项的特征误认作目标词的含义。<br>• 立场反转陷阱：将原文词义或态度完全颠倒。如Q3选项D将camaraderie（同袍情谊）曲解为&#x27;a feeling of loneliness&#x27;（孤独感），恰好是原文的反义；原文中孤独感是需要被友谊抵御的负面状态，选项却将其当作目标词本身的意思。（Q3）💡 词义猜测题中，若某选项的含义与原文语境呈现的情感倾向完全相反，很可能是立场反转陷阱。先判断目标词在语境中的正负倾向，再排除与该倾向相反的选项。</div>
+</div><div class="answer-section">
+    <div class="answer-header">
+    <span class="article-tag green">B</span>
+    <div>
+        <div class="article-title">From Shoulder Poles to Global Tables: The Rise of Shaxian Snacks</div>
+    </div>
+</div>
+    <div class="answer-choices"><span class="answer-choice">Q1: A</span> <span class="answer-choice">Q2: B</span> <span class="answer-choice">Q3: A</span> <span class="answer-choice">Q4: A</span></div>
+    <div class="explanation-block">
+    <strong>Q1</strong> 细节题：原文信息精准定位与时间线匹配<br>
+    推理链：根据第2段，原文明确写道张秀姬和丈夫「set out with nothing but wooden mallets and shoulder poles to make a living in Fuzhou」，即他们出发时只携带了木槌和肩挑扁担，选项A与原文完全一致，因此为正确答案。<br>
+    排除链：选项B犯了范围转移的错误，standardized ingredients和smartphone出现在第3段末尾，是如今标准化配料配送的方式，属于张秀姬返乡后的现状，而非她90年代出发创业时所携带的物品，时间线错位。选项C犯了概念偷换的错误，pork-filled wontons和peanut sauce是沙县小吃的招牌菜品内容（第1段提到bianrou和banmian），并非他们随身携带的谋生工具，将「做什么」偷换为「带什么」。选项D属于无中生有，原文只说他们「burdened by 200,000 yuan in debt」（背负20万债务），从未提及这笔钱来自当地银行的贷款（loan from a local bank），原文也未说明债务来源，选项凭空编造了信息。
+</div><div class="explanation-block">
+    <strong>Q2</strong> 细节题：举例信息的归纳概括与选项措辞辨析<br>
+    推理链：根据第3段，原文指出海外门店「adapt creatively to local tastes」，并列举了三个具体实例：在沙特阿拉伯，猪肉馅馄饨被重新改良以尊重当地饮食习惯；在日本，厨师更慷慨地涂抹花生酱；在法国，淋一点沙拉油增添了当地风味。选项B准确概括了这种创造性调整的两种具体表现，与原文事实完全吻合，因此为正确答案。<br>
+    排除链：选项A犯了绝对化的错误，原文说的是「adapt creatively to local tastes」（创造性地适应当地口味），是调整而非完全替换，「replace all traditional recipes」将「适应性调整「夸大为」全部替换」，且「all」一词过于绝对，原文明确保留了大量传统元素。选项C属于与原文相悖的编造，原文强调的是各地门店根据当地口味做出不同调整，而选项C说全球菜单完全一样（exactly the same menu worldwide），这直接否定了原文「adapt creatively」的核心信息。选项D属于无关信息，原文从未提及海外门店减少菜品数量（reduce the variety of dishes）来聚焦少数畅销品，这一信息完全是凭空捏造，与原文讨论的「本土化适应」主题无关。
+</div><div class="explanation-block">
+    <strong>Q3</strong> 词义题：语境推断与近义词辨析<br>
+    推理链：根据第3段，「a drizzle of salad oil adds a touch of local flair」描述的是在法国，淋一点沙拉油为菜品增添了一种具有当地特色的风格和韵味。结合上下文，各地门店通过创造性调整来适应当地口味，沙特改良馅料、日本增加花生酱、法国加油——这些都是为菜品增添当地特色与风格，因此「flair」在此处最可能意为「独特而时尚的特质」，选项A正确。<br>
+    排除链：选项B犯了概念偷换的错误，「strict dietary restriction」（严格的饮食限制）与flair的语境不符。虽然前文提到沙特门店尊重当地饮食习惯（dietary customs），但那是针对沙特的伊斯兰饮食禁忌而言，法国的salad oil与限制无关，此处将「饮食禁忌」的概念从沙特语境偷换到法国语境中的flair词义上，属于张冠李戴。选项C属于无中生有，将flair曲解为一种传统法国烹饪方法（a type of traditional French cooking method），但原文只是说沙拉油增添了当地风味，flair并非指某种具体的烹饪技法，而是描述增添的效果——一种风格和特色，选项凭空编造了flair的含义。选项D属于脱离语境的错误，将flair解释为海外经营的财务优势（a financial advantage for overseas business），完全脱离了原文讨论「口味调整」的语境，原文此句聚焦于菜品的风味调整而非商业利益，选项将语义范围从烹饪领域跳跃到了经济领域。
+</div><div class="explanation-block">
+    <strong>Q4</strong> 主旨题：全文脉络归纳与核心论点概括<br>
+    推理链：文章整体结构呈现三个递进层次：第1段介绍沙县小吃作为地方传统（local tradition），超过200个品种，是村民致富的根基；第2段讲述品牌从肩挑扁担发展到全国性品牌的崛起；第3段展示品牌全球化扩张并创造性适应各地口味（globally adaptive brand），同时美食旅游吸引外出者返乡（drew former migrants back home）。选项A完整涵盖了从地方传统到全球化适应品牌再到吸引返乡的全文脉络，是最佳主旨概括。<br>
+    排除链：选项B犯了范围缩小的错误，张秀姬的个人故事仅是第2段的一个案例，用于映射品牌崛起（「Zhang&#x27;s personal journey mirrors the brand&#x27;s remarkable rise」），并非全文主旨。文章第1段讲传统溯源、第3段讲全球化与返乡，个人还债故事只是品牌发展历程的一个切面，选项将其扩大为全文核心论点，以偏概全。选项C犯了绝对化的错误，「strictly preserving its original recipes abroad」与原文第3段「adapt creatively to local tastes」直接矛盾，海外门店恰恰是在调整而非严格保留原有食谱；同时「the largest restaurant chain in China」在原文中无依据，原文只说有10万家门店，并未称其为最大连锁品牌，选项既有事实错误又有逻辑错误。选项D犯了绝对化的错误，「relies entirely on replacing traditional ingredients」中的「entirely」过于绝对，原文说的是「adapt creatively」（创造性适应），是调整和改良而非完全替换，且文章主题是沙县小吃的完整发展历程，不仅限于海外扩张，选项D既歪曲了适应方式又缩小了文章主旨范围。
+</div>
+    <div class="traps-section">Q1-B [scope_shift]: <br>Q1-C [concept_swap]: <br>Q1-D [fabrication]: <br>Q2-A [absolutization]: <br>Q2-C [fabrication]: <br>Q2-D [irrelevant_answer]: <br>Q3-B [concept_swap]: <br>Q3-C [fabrication]: <br>Q3-D [out_of_context]: <br>Q4-B [scope_shift]: <br>Q4-C [absolutization]: <br>Q4-D [fabrication]: </div>
+    <div class="word-bank"><strong>新搭配</strong><br>• <strong>with practiced ease</strong> — 娴熟地，轻松自如地<br>• <strong>burdened by debt</strong> — 负债累累，被债务压身<br>• <strong>a touch of local flair</strong> — 一丝当地特色与风情<br>• <strong>set out to make a living</strong> — 出发谋生，外出创业<br><br><strong>熟词生义</strong><br>• <strong>mirror</strong>：常见义"镜子（名词）" → 文中义"映照，反映（动词）——文中指个人经历与品牌发展相呼应"<br>• <strong>spanning</strong>：常见义"span的现在分词形式，跨度/范围" → 文中义"横跨，遍布（动词现在分词作后置定语）——强调覆盖范围之广"<br><br><strong>易错点</strong><br>• 范围转移/时间线错位：将不同时间段或不同段落的信息拼凑在一起。如Q1选项B将第3段「如今的标准化配料和智能手机配送」与第2段「90年代出发创业所携物品」混淆，时间线完全错位。（Q1）💡 做细节题时，先锁定题干关键词对应的具体段落和时间节点，再与选项逐一比对，警惕跨段信息拼凑的陷阱。<br>• 绝对化陷阱：选项用all、entirely、exactly等绝对词歪曲原文的适度表述。如Q2选项A用&quot;replace all&quot;将原文&quot;adapt creatively&quot;（创造性适应）夸大为全部替换；Q4选项C用&quot;strictly preserving&quot;与原文的本土化适应直接矛盾。（Q1）💡 看到选项中出现all、entirely、exactly、strictly等绝对词时，务必回原文核实，原文通常使用较温和的措辞如adapt、adjust、modify等。<br>• 以偏概全/范围缩小：用局部案例替代全文主旨。如Q4选项B将张秀姬个人还债故事当作全文核心论点，但原文明确说&quot;Zhang&#x27;s personal journey mirrors the brand&#x27;s remarkable rise&quot;，个人故事只是品牌崛起的映射，而非文章主旨。（Q1）💡 做主旨题时，注意区分&quot;举例论证&quot;与&quot;核心论点&quot;：例子服务于观点，不能以例代旨。关注文章首尾段和各段首句，把握整体脉络。<br>• 无中生有：选项编造原文未提及的信息。如Q1选项D凭空捏造&quot;loan from a local bank&quot;，原文只说&quot;burdened by debt&quot;未说明债务来源；Q2选项D捏造&quot;reduce the variety of dishes&quot;，原文从未提及减少菜品数量。（Q1）💡 遇到选项中出现原文没有明确说明的细节（如具体来源、原因、方式等），应高度警惕，这些很可能是命题人凭空编造的干扰项，必须回到原文逐字核实。</div>
+</div><div class="answer-section">
+    <div class="answer-header">
+    <span class="article-tag purple">C</span>
+    <div>
+        <div class="article-title">Fengyun-4C: China&#x27;s Most Capable Weather Satellite Strengthens Disaster Defense</div>
+    </div>
+</div>
+    <div class="answer-choices"><span class="answer-choice">Q1: A</span> <span class="answer-choice">Q2: A</span> <span class="answer-choice">Q3: A</span> <span class="answer-choice">Q4: A</span></div>
+    <div class="explanation-block">
+    <strong>Q1</strong> 细节题：区分不同载荷的对应功能<br>
+    推理链：根据第2段原文，“an interference-based vertical atmospheric sounder provided refined spectral data, capturing more temperature layers than previous models, which improves the accuracy of global numerical weather prediction models“，干扰式垂直大气探测仪通过捕获比以往型号更多的温度层，提供更精细的光谱数据，从而提高了全球数值天气预报模型的精度。选项A准确复述了这一因果链条，故为正确答案。<br>
+    排除链：选项B属于概念偷换陷阱：区分高空卷云是静止辐射成像仪（geostationary radiation imager）的功能，而非垂直大气探测仪的功能，题干问的是后者，B张冠李戴。选项C属于无中生有陷阱：绘制对流活动和追踪闪电事件是闪电成像仪（lightning imager）的能力，原文并未说垂直大气探测仪有此功能，C将不同载荷的功能混为一谈。选项D属于范围转移陷阱：捕获太阳耀斑和电离层发光现象是第3段提到的紫外和X射线传感器的功能，与垂直大气探测仪无关，D将观测对象从大气层转移到了太阳活动领域，属于典型的跨段落信息错配。
+</div><div class="explanation-block">
+    <strong>Q2</strong> 推断题：政策指令与卫星部署的因果逻辑<br>
+    推理链：根据第1段原文，“The deployment of the Fengyun-4C follows the central government&#x27;s policy directives for more robust monitoring of extreme weather conditions and stronger disaster prevention efforts“，说明卫星部署是跟随中央政府政策指令而来的，且原文提到卫星“expected to enter its operational trial phase before this year&#x27;s primary flood season“，即力争在主汛期前投入运行，可见政策驱动与汛期部署之间存在直接的因果推动关系，选项A的推断合理。<br>
+    排除链：选项B属于因果倒置陷阱：原文说的是政策驱动卫星部署以加强灾害防御，而非为了“超越他国“这一目的，将防灾的政策初衷偷换为技术竞赛的动机，属于过度推断。选项C属于无中生有陷阱：原文明确说卫星部署“follows“（跟随）政策指令，即政策在先、部署在后，C却反过来说政策是对卫星成功测试的回应，时间线和因果关系完全颠倒，与原文事实不符。选项D属于概念偷换陷阱：原文并未提及风云四号C星是用来“替换已过时的旧卫星“，也未说旧卫星因极端天气事件而过时，D的“replace older Fengyun satellites that had become obsolete“是凭空捏造的信息，原文实际强调的是新增部署以强化防灾能力。
+</div><div class="explanation-block">
+    <strong>Q3</strong> 态度题：作者对成就的积极评价倾向<br>
+    推理链：通读全文，作者使用了大量积极评价性用语：第1段称风云四号C星为“the world&#x27;s most capable single geostationary meteorological satellite“，第2段用“unprecedented clarity“描述其观测能力，第3段引述陈振林指出中国建成了“the world&#x27;s largest and most comprehensive meteorological observation system“且是唯一覆盖四种近地轨道类型的国家。全文始终围绕中国气象观测成就展开，语气积极正面、充满肯定，故作者态度为Appreciative（赞赏的）。<br>
+    排除链：选项B属于立场反转陷阱：Skeptical（怀疑的）与全文积极正面的评价性语言截然相反，作者对风云四号C星的技术能力、对中国的气象观测体系均给予高度评价，没有任何质疑或保留。选项C属于无中生有陷阱：Indifferent（冷漠的）意味着不关心、无所谓，但全文详细描述卫星的六大载荷、AI预警系统、国际贡献等，显然作者对此话题高度重视并投入大量笔墨，绝非漠不关心。选项D属于浅层阅读陷阱：Cautious（谨慎的）可能让考生误以为作者提到“expected to““set to become“等措辞体现了审慎态度，但这些表达只是对尚未完成事项的客观陈述，全文整体语气是肯定和赞赏的，不存在谨慎保留的态度倾向。
+</div><div class="explanation-block">
+    <strong>Q4</strong> 篇章结构题：总-分-延伸的行文脉络<br>
+    推理链：文章第1段首先介绍风云四号C星这一技术里程碑——发射背景、全球最强定位及政策驱动目标，属于“引入技术里程碑“；第2段详细列举三大载荷的具体技术能力（辐射成像仪、垂直探测仪、闪电成像仪），属于“具体技术能力“；第3段扩展至太阳观测、AI预警系统MAZU及中国综合气象观测体系的全球影响和国际合作前景，属于“更广泛的意义和未来影响“。三段结构恰好对应选项A所述的组织模式，故为正确答案。<br>
+    排除链：选项B属于概念偷换陷阱：原文并非按“从设计到发射“的时间线叙述卫星开发过程，第1段仅在开头简要提及发射时间和在轨测试，并未展开设计阶段、研发历程等内容；且后文也并非与以往型号的对比，而是描述当前载荷能力，B所说的“chronological account“和“comparison with previous models“均与原文实际行文不符。选项C属于无中生有陷阱：原文并未以“问题-解决“框架展开，即先呈现气象灾害问题再逐一说明卫星如何应对，而是从技术成就出发介绍卫星能力，气象灾害只是背景动机而非贯穿全文的问题线索，C的组织模式与原文不符。选项D属于浅层阅读陷阱：原文仅在末段提到中国是唯一覆盖四种轨道类型的国家，并未展开与其他国家卫星能力的对比（contrast），也未以评价国际合作为主体内容，D将末段的少量国际信息夸大为全文的核心组织线索，属于以偏概全。
+</div>
+    <div class="traps-section">Q1-B [concept_swap]: <br>Q1-C [fabrication]: <br>Q1-D [scope_shift]: <br>Q2-B [causal_reversal]: <br>Q2-C [fabrication]: <br>Q2-D [concept_swap]: <br>Q3-B [stance_reversal]: <br>Q3-C [fabrication]: <br>Q3-D [superficial_reading]: <br>Q4-B [concept_swap]: <br>Q4-C [fabrication]: <br>Q4-D [superficial_reading]: </div>
+    <div class="word-bank"><strong>新搭配</strong><br>• <strong>robust monitoring</strong> — 强健的/严密的监测<br>• <strong>first line of defense</strong> — 第一道防线<br>• <strong>unprecedented clarity</strong> — 前所未有的清晰度<br>• <strong>mitigate the impact of</strong> — 减轻……的影响<br>• <strong>environmental governance</strong> — 环境治理<br><br><strong>熟词生义</strong><br>• <strong>sounder</strong>：常见义"发声器；探测者（人）" → 文中义"垂直探测仪——一种通过分析大气辐射光谱来测量温度和湿度垂直分布的遥感仪器"<br>• <strong>payload</strong>：常见义"（飞机的）有效载荷，商业载重" → 文中义"卫星载荷——搭载在卫星上执行特定探测任务的仪器设备"<br>• <strong>governance</strong>：常见义"公司治理，管理方式" → 文中义"全球治理——国际社会在环境、气候等公共议题上的协调与监管机制"<br><br><strong>易错点</strong><br>• 张冠李戴：细节题中将不同对象的功能混淆。如Q1中把辐射成像仪的功能（区分卷云）误当成探测仪的功能，或把闪电成像仪的功能（追踪对流活动）张冠李戴。（Q1）💡 科技类文章常出现多个并列对象（如本文的六大载荷），做题时务必在原文中精准定位题干所问的具体对象，用笔圈出主语，切忌把A的功能套到B上。<br>• 因果倒置：推断题中颠倒原文的因果方向。如Q2中原文说政策指令在前、卫星部署在后（follows），却误选&#x27;政策是对卫星测试成功的回应&#x27;，把原因当成了结果。（Q1）💡 遇到含因果关系的推断题，先在原文标出因果标志词（follows, due to, lead to等），再画出&#x27;因→果&#x27;方向箭头，对照选项检查因果方向是否一致。<br>• 浅层阅读：态度题中仅凭个别措辞（如expected to, set to）就判断作者态度为&#x27;谨慎的&#x27;，忽略了全文整体的积极评价基调。（Q1）💡 判断作者态度不能只看一两个词，要综合全文的评价性语言（如most capable, unprecedented, largest and most comprehensive）做整体判断，&#x27;expected to&#x27;等只是对尚未发生事件的客观表述，不等于态度审慎。<br>• 以偏概全：篇章结构题中把段落末尾的少量信息夸大为全文的核心组织线索。如Q4中误以为文章是以&#x27;国际对比&#x27;为主线，实则在末段仅一笔带过。（Q1）💡 做篇章结构题时，应先概括每段的核心话题和段落间的关系，再与选项对照。如果某个选项的关键词只在某一段的部分句子中出现，而非贯穿全文，大概率是以偏概全的干扰项。</div>
+</div><div class="answer-section">
+    <div class="answer-header">
+    <span class="article-tag red">D</span>
+    <div>
+        <div class="article-title">Policy Push for Better Children&#x27;s Medicines</div>
+    </div>
+</div>
+    <div class="answer-choices"><span class="answer-choice">Q1: C</span> <span class="answer-choice">Q2: B</span> <span class="answer-choice">Q3: B</span> <span class="answer-choice">Q4: A</span></div>
+    <div class="explanation-block">
+    <strong>Q1</strong> 细节题：原文未提及信息的识别<br>
+    推理链：题目问哪项不属于指南给予已上市儿童药物的优惠措施。根据第2段，指南明确提出的优惠措施包括：加速审评审批通路（accelerated review and approval pathways，对应A）、优先纳入国家基本药物目录（preferential inclusion in the national essential medicines list，对应B）、优先纳入国家医保目录（preferential inclusion in the national drug reimbursement list，对应D）。而C选项“儿科制剂的独占专利保护延期“在原文中完全没有提及，原文只涉及审批加速、目录纳入和数据滚动提交等措施，从未出现patent protection或extension相关表述，因此C不属于指南措施，是本题正确答案。<br>
+    排除链：A选项“加速审评审批通路“是第2段明确提到的优惠措施，原文表述为”granting listed products accelerated review and approval pathways“，属于原文直接列举的措施，因此不是答案。B选项“优先纳入国家基本药物目录“同样是第2段明确提到的措施，原文为”giving such drugs preferential inclusion in the national essential medicines list“，与原文完全一致，因此不是答案。D选项“优先纳入国家医保目录“在第2段也有明确对应，原文为”preferential inclusion in the national drug reimbursement list“，与D选项一致，因此不是答案。C选项“儿科制剂的独占专利保护延期“属于无中生有型干扰，原文全文未提及任何专利保护延期的内容，命题者利用考生将“优惠政策“与”专利保护“进行主观关联的心理设置陷阱，C是唯一原文未提及的选项。
+</div><div class="explanation-block">
+    <strong>Q2</strong> 推断题：措施背后的隐含动机<br>
+    推理链：题目要求推断将成人安全数据外推至儿科人群的做法说明了什么。根据第3段，原文先提到建立儿科研究病房和探索国家儿科临床试验网络，其目的是”pool resources and coordinate participant recruitment“（整合资源并协调参与者招募），说明儿童临床试验招募困难。随后提到允许将中国成人安全数据外推至儿科人群，这一做法正是为了在儿童临床试验受试者难以招募的背景下，利用已有成人数据来弥补儿科证据不足的问题。因此B选项“反映了为弥补儿童临床研究入组困难所做的努力“可由此合理推断。<br>
+    排除链：A选项“旨在完全替代所有儿科临床试验“属于绝对化陷阱，原文用词”allowing“表明这是一种辅助性、补充性的措施，而非全面替代，且第3段同时还在推动建立临床试验网络，说明临床试验仍需进行，A将“辅助“夸大为“完全替代“，错误。C选项“被规定为所有未来儿科药物审批的首要方法“属于范围扩大陷阱，原文仅说对”drugs suitable for children but lacking pediatric labeling“允许数据外推，C将其扩展为“所有未来儿科药物审批“的”首要方法“，既扩大了适用范围又拔高了方法地位，错误。D选项“确保成人药物可直接开给儿童而无需更改标签“属于因果颠倒陷阱，原文恰恰是因为儿童标签信息缺失才进行数据外推研究，外推的目的是为补充标签信息提供依据，而非绕过标签要求直接用药，D将因果关系完全颠倒，错误。
+</div><div class="explanation-block">
+    <strong>Q3</strong> 态度题：作者对政策导向的整体立场<br>
+    推理链：题目问作者对联合指南的态度。通读全文，作者在第1段客观陈述儿童药物短缺现状后，第2至4段详细介绍了指南提出的各项积极措施，包括加速审批、优先纳入目录、建立临床试验网络、加强供应保障、鼓励保险产品等，全篇语气始终是建设性和肯定性的，没有任何质疑、批评或保留的表述，所有内容都在展示指南如何系统性地应对问题，因此作者对指南持支持态度，选B。<br>
+    排除链：A选项”Skeptical（怀疑的）“属于立场反转陷阱，全文从始至终没有出现任何质疑指南有效性的语句，作者既未指出指南的不足，也未暗示措施可能失败，与原文立场完全相反，错误。C选项”Indifferent（漠然的）“属于浅层阅读陷阱，如果作者漠不关心，就不会用四个段落详细阐述指南的各项具体措施及其针对性，文章的信息密度和细致程度本身就体现了作者的关注与重视，错误。D选项”Critical（批评的）“属于脱离语境陷阱，全文没有出现任何批评性语言，所有描述都是对政策内容和措施方向的正面呈现，不存在批判性视角，错误。
+</div><div class="explanation-block">
+    <strong>Q4</strong> 结构题：问题—原因—对策逻辑链<br>
+    推理链：题目要求判断文章的整体结构。第1段呈现现象：儿童药物短缺、标签信息不足（presenting a phenomenon）；第2段前半部分分析原因：药企激励不足导致供应不可靠（analyzing its causes）；第2至4段系统提出对策：加速审批、优先纳入目录、建立试验网络、数据外推、集中生产、预警机制、保险产品（proposing countermeasures）。整体结构为“提出问题—分析原因—提出对策“，与A选项完全吻合。<br>
+    排除链：B选项“比较两种对立观点并调和分歧“属于概念替换陷阱，全文没有任何对立观点的比较与调和，文章始终围绕单一政策方向展开，不存在两种立场之间的辩论或折中，B的结构描述与文章实际框架完全不符，错误。C选项“追溯政策的历史演变并预测其未来“属于无中生有陷阱，文章没有涉及该指南的历史发展脉络，也没有对政策未来走向做出预测，全文聚焦于当前指南的内容和措施，C引入了原文不存在的“历史“和”预测“维度，错误。D选项“用实例论证理论并挑战其有效性“属于范围偏移陷阱，文章并非在论证某个理论，而是在介绍一项具体政策；更重要的是，文章完全没有“挑战有效性“的内容，全篇是对政策的正面呈现，D的核心要素与原文不匹配，错误。
+</div>
+    <div class="traps-section">Q1-A [superficial_reading]: <br>Q1-B [concept_swap]: <br>Q1-D [irrelevant_answer]: <br>Q2-A [absolutization]: <br>Q2-C [scope_shift]: <br>Q2-D [causal_reversal]: <br>Q3-A [stance_reversal]: <br>Q3-C [superficial_reading]: <br>Q3-D [out_of_context]: <br>Q4-B [concept_swap]: <br>Q4-C [fabrication]: <br>Q4-D [scope_shift]: </div>
+    <div class="word-bank"><strong>新搭配</strong><br>• <strong>rolling data submissions</strong> — 滚动数据提交（分批逐步提交审评数据，而非一次性提交全部材料）<br>• <strong>cross-institutional ethics review</strong> — 跨机构伦理审查（多个机构共同参与的伦理审查机制，避免重复审查、提高效率）<br>• <strong>preferential inclusion</strong> — 优先纳入（在目录或名单中获得优先被收录的待遇）<br>• <strong>persistent shortage</strong> — 持续短缺（长期存在的、难以消除的供应不足）<br><br><strong>熟词生义</strong><br>• <strong>substandard</strong>：常见义"不达标的，低于标准的（通常指产品质量不合格）" → 文中义"本文指药物标签上的儿童用药信息“低于规范要求“，不是产品本身质量不合格，而是信息内容不充分、不规范"<br>• <strong>extrapolate</strong>：常见义"推断，外推（由已知信息推测未知情况）" → 文中义"在临床研究语境中特指“数据外推”——将成人群体的安全数据推及至儿童群体使用，是一种监管科学中的专业方法"<br>• <strong>pool</strong>：常见义"水池，游泳池（名词）" → 文中义"动词用法，意为“汇集、整合”——pool resources即整合各方资源，是学术和政策文本中的常见搭配"<br><br><strong>易错点</strong><br>• 绝对化陷阱：将原文的辅助性措施理解为完全替代方案。如Q2中A选项将“允许数据外推“曲解为“完全替代所有儿科临床试验“，原文用allowing表明这只是补充性手段，且同时还在建立临床试验网络。（Q1）💡 看到allowing、support、encourage等表示“辅助/鼓励“的词时，要警惕选项中出现replace、entirely、eliminate等绝对化表述，二者逻辑上互斥。<br>• 无中生有陷阱：选项引入原文完全未提及的信息。如Q1中C选项“独占专利保护延期“在原文中毫无依据，命题者利用考生将“优惠政策“与”专利保护“主观关联的心理设置干扰。（Q1）💡 做细节题时，每个选项必须在原文中找到明确对应。如果某个选项的关键概念（如patent、extension）在原文中完全找不到，即使看起来“合理“也应排除。<br>• 范围扩大陷阱：将原文限定范围内的措施扩大到全领域。如Q2中C选项将针对“缺乏儿童标签的药物“的数据外推扩大为“所有未来儿科药物审批的首要方法“，既扩大适用范围又拔高方法地位。（Q1）💡 注意原文中的限定词（certain、specific、some等），当选项出现all、every、primary、universal等泛化词时，需回到原文核实范围是否被偷换。<br>• 立场反转陷阱：将作者支持的态度误判为质疑或批评。如Q3中A选项Skeptical和D选项Critical与全文建设性、肯定性的语调完全相反。（Q1）💡 判断态度题时，留意全文的措辞倾向。如果文章系统性阐述政策如何应对问题，无任何质疑或保留表述，则作者态度为支持性而非批判性。</div>
+</div><div class="footer">师倍AI · 外刊英语周周练 — 质量是命 · 减负是刀 · 单品是路</div>
+    </div>
+</body>
+</html>
